@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="51b69d99-ff12-4dcb-a007-8b4039098248" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YNQ2m9lPzXBMEtn5t0dJqNbzei" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="OkHttpExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mkyong.http.OkHttpExample" />
+      <module name="test2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mkyong.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.OkHttpExample" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51b69d99-ff12-4dcb-a007-8b4039098248" name="Default Changelist" comment="" />
+      <created>1582780367004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582780367004</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="772" y="353" width="800" height="684" key="#Project_Structure" timestamp="1582781546291">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="772" y="353" width="800" height="684" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1582781546291" />
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582781430351">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1582781430351" />
+    <state x="716" y="412" width="487" height="302" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582781019072">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="716" y="412" width="487" height="302" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1920.1053@0.27.1920.1053" timestamp="1582781019072" />
+    <state width="1874" height="328" key="GridCell.Tab.0.bottom" timestamp="1582868648801">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1582868648801" />
+    <state width="1874" height="328" key="GridCell.Tab.0.center" timestamp="1582868648800">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1582868648800" />
+    <state width="1874" height="328" key="GridCell.Tab.0.left" timestamp="1582868648799">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1582868648799" />
+    <state width="1874" height="328" key="GridCell.Tab.0.right" timestamp="1582868648800">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1582868648800" />
+    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog" timestamp="1582781414161">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1582781414161" />
+    <state x="449" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1582781756832">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1582781756832" />
+    <state x="733" y="333" width="443" height="448" key="chooseDestDirectoryDialog" timestamp="1582781046264">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="733" y="333" width="443" height="448" key="chooseDestDirectoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1582781046264" />
+    <state x="483" y="146" width="944" height="822" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582865239200">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="483" y="146" width="944" height="822" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1582865239200" />
+  </component>
+</project>
