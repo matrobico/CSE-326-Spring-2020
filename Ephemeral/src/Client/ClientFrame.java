@@ -1,4 +1,4 @@
-package cse.oop.sgudmunson.hw9.one;
+package Client;
 /**
  * Is the GUI frontend for a chat client
  *
@@ -100,10 +100,9 @@ public class ClientFrame extends JFrame {
         
         public static void main(String[] args){
             int port;
-            
+
             Scanner scan = new Scanner(System.in);
-            System.out.print("Enter a port number: ");
-            port = Integer.parseInt(scan.nextLine());
+            port = 443;
     
             String name = null;
             System.out.print("Enter a name: ");

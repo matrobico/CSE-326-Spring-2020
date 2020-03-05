@@ -1,4 +1,4 @@
-package cse.oop.sgudmunson.hw9.one;
+package Client;
 
 /**
  * Is the backend for a chat client
@@ -9,11 +9,12 @@ package cse.oop.sgudmunson.hw9.one;
  * @bugs none
  */
 
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.net.ssl.HandshakeCompletedListener;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
-
-import static cse.oop.sgudmunson.hw9.one.ClientFrame.chat;
 
 /**
  * Created by ritakuo on 4/9/19.
@@ -44,8 +45,28 @@ public class Client {
 
     private void startClient() {
         try {
+            /*
             // Establish a connection with the server
-            Socket client = new Socket("eph.nopesled.com", 443);
+            SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+            SSLSocket client = (SSLSocket) sslsocketfactory.createSocket("192.168.1.10", 3000);
+            client.startHandshake();
+
+            client.addHandshakeCompletedListener(
+                    new HandshakeCompletedListener() {
+                        public void handshakeCompleted(
+                                HandshakeCompletedEvent event) {
+                            System.out.println("Handshake finished!");
+                            System.out.println(
+                                    "\t CipherSuite:" + event.getCipherSuite());
+                            System.out.println(
+                                    "\t SessionId " + event.getSession());
+                            System.out.println(
+                                    "\t PeerHost " + event.getSession().getPeerHost());
+                        }
+                    }
+            );
+            */
+            Socket client = new Socket("192.168.1.10", 3000);
             Thread.sleep(1000);
 
             // Create a thread to receive the messages from the server

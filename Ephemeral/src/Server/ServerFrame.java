@@ -1,7 +1,6 @@
-package cse.oop.sgudmunson.hw9.two;
+package Server;
 /**
  * Is the GUI frontend for a chat client server
- *
  *
  * @author Shadron Gudmunson
  * @version HW <9>, #<2>

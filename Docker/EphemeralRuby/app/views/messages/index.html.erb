@@ -1,0 +1,21 @@
+<h1>Listing messages</h1>
+<%= link_to 'New message', new_message_path %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.title %></td>
+      <td><%= message.text %></td>
+      <td><%= link_to 'Show', message_path(message) %></td>
+      <td><%= link_to 'Edit', edit_message_path(message) %></td>
+      <td><%= link_to 'Destroy', message_path(message),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
