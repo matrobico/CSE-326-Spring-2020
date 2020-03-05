@@ -1,0 +1,17 @@
+<h1>Listing Messages</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @message.each do |message| %>
+    <tr>
+      <td><%= message.title %></td>
+      <td><%= message.text %></td>
+      <td><%= link_to 'Show', message_path(message) %></td>
+    </tr>
+  <% end %>
+</table>
