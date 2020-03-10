@@ -1,5 +1,12 @@
 package com.mkyong.http;
 
+/**
+ * To-Do
+ * Code that can make a GET request for messages
+ * Code that can make a POST request for messages
+ * Modify current code to more object oriented and structured
+ */
+
 import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
