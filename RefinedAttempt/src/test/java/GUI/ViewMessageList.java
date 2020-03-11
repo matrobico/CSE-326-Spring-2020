@@ -12,10 +12,15 @@ with it. This is a makeshift GUI for now. It exists for demo purposes.
 
 package GUI;
 
+import com.mkyong.http.*;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ViewMessageList extends JPanel implements ActionListener {
     protected JTextField textField;
@@ -43,12 +48,47 @@ public class ViewMessageList extends JPanel implements ActionListener {
         c.weightx = 1.0;
         c.weighty = 1.0;
         add(scrollPane, c);
+
+        refreshMessages();
+    }
+
+    /*
+     The problem (one of them) with this at the moment, is that every time you
+     press to refresh, it displays ALL the messages from the web server. Ideally,
+     We want it to display only new messages every time. I'll figure this out later.
+
+     Also, performing any action both refreshes the messages like above AND sends a
+     POST request for the entered text. Obviously we don't want that (at least not like
+     it is now), so that also needs to be fixed. 
+     */
+    public void refreshMessages() {
+        OkHttpExample obj = new OkHttpExample();
+        try {
+            for (String s : obj.sendGet("51", "SuperSecretKey")) {
+                textArea.append(s + newline);
+                textField.selectAll();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void actionPerformed(ActionEvent evt) {
+        // Testing things out
+        refreshMessages();
+
+        /*
         String text = textField.getText();
         textArea.append(text + newline);
         textField.selectAll();
+         */
+
+        OkHttpExample obj = new OkHttpExample();
+        try {
+            obj.sendPost("51", "SuperSecretKey");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //Make sure the new text is visible, even if there
         //was a selection in the text area.
@@ -62,7 +102,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("TextDemo");
+        JFrame frame = new JFrame("Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add contents to the window.

@@ -14,6 +14,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OkHttpExample {
 
@@ -32,11 +34,12 @@ public class OkHttpExample {
 
     }
 
-    private void sendGet(String msgNum, String key) throws Exception {
+    public List<String> sendGet(String msgNum, String key) throws Exception {
         String[] lines = new String[1000];
 
         Request request = new Request.Builder()
-                .url("https://eph.nopesled.com/messages")
+                .url("http://127.0.0.1:3000/messages")
+                //.url("https://eph.nopesled.com/messages")
                 .addHeader("custom-key", "mkyong")  // add request headers
                 .addHeader("User-Agent", "OkHttp Bot")
                 .build();
@@ -54,13 +57,19 @@ public class OkHttpExample {
             Document doc = Jsoup.parse(thing);
 
             Elements content = doc.getElementsByTag("td");
+            List<String> stringList = new ArrayList<>();
 
             for (Element input : content){
                 if (input.text().contains("=")) {
                     String encryptmessage = input.text().replaceAll("\\s+", "");
-                    System.out.println(AES.decrypt(encryptmessage, key));
+                    //System.out.println(AES.decrypt(encryptmessage, key));
+                    stringList.add(AES.decrypt(encryptmessage, key));
                 }
             }
+
+            return stringList;
+
+
         }
 
     }
