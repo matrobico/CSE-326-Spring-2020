@@ -65,7 +65,7 @@ public class OkHttpExample {
 
     }
 
-    private void sendPost(String message, String key) throws Exception {
+    public void sendPost(String message, String key) throws Exception {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()

@@ -10,10 +10,11 @@ import java.awt.event.ActionEvent;
 class TextDemo extends JFrame implements ActionListener {
 
     JPanel panel;
+    // Label to mark where to enter text
     JLabel text_label;
     JFrame textField;
     JButton submit, cancel;
-    JTextArea viewArea;
+    JTextArea textArea;
 
     TextDemo() {
 
@@ -26,25 +27,25 @@ class TextDemo extends JFrame implements ActionListener {
         submit.addActionListener(this);
 
         // Text Area
-        viewArea = new JTextArea(20, 100);
+        textArea = new JTextArea(10, 20);
         textField = new JFrame("Text Field");
 
         panel = new JPanel();
         panel.add(text_label);
         panel.add(submit);
-        panel.add(viewArea);
+        panel.add(textArea);
 
         textField.add(panel);
-        textField.setSize(400, 400);
+        textField.setSize(400, 300);
         textField.show();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Adding the listeners to components.
-        add(panel, BorderLayout.CENTER);
-        setTitle("Messages");
-        setSize(300, 100);
-        setVisible(true);
+        //add(panel, BorderLayout.CENTER);
+        //setTitle("Messages");
+        //setSize(300, 100);
+        //setVisible(true);
 
     }
 
@@ -56,7 +57,13 @@ class TextDemo extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String s = ae.getActionCommand();
         if (s.equals("SUBMIT")) {
-            System.out.println("TESTING");
+            System.out.println(textArea.getText());
+            OkHttpExample obj = new OkHttpExample();
+            try {
+                obj.sendPost("51", "SuperSecretKey");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
