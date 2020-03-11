@@ -73,7 +73,8 @@ class LoginDemo extends JFrame implements ActionListener {
         if (userName.trim().equals("admin") && password.trim().equals("admin")) {
             message.setText(" Hello " + userName);
             setVisible(false);
-            new TextDemo();
+            //new InputTextDemo();
+            new ViewMessageList();
 
 
         } else {

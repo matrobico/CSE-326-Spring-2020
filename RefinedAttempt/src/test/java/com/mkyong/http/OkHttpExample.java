@@ -69,12 +69,12 @@ public class OkHttpExample {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()
-                .add("message[title]", "here is the test message")
+                .add("message[title]", "Matthew: ")
                 .add("message[text]", encryptedMessage )
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.2:3000/messages")
+                .url("http://127.0.0.1:3000/messages")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
