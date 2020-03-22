@@ -30,10 +30,10 @@ public class OkHttpExample {
         OkHttpExample obj = new OkHttpExample();
 
         System.out.println("Register User");
-        obj.registerUser("test", "asdfasdf", "asdfasdf");
+        obj.registerUser("user3", "asdfasdf", "asdfasdf");
 
         System.out.println("Logging in");
-        authToken = obj.login("test", "asdfasdf");
+        authToken = obj.login("user3", "asdfasdf");
 
         System.out.println(authToken);
 

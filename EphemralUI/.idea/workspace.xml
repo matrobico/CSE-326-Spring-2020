@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EphemralUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EphemralUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/LoginDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/LoginDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/TextDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/TextDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/ViewMessageList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/ViewMessageList$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/ViewMessageList.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/GUI/ViewMessageList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/META-INF/RefinedAttempt.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/com/mkyong/http/AES.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/com/mkyong/http/AES.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/com/mkyong/http/OkHttpExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RefinedAttempt/target/test-classes/com/mkyong/http/OkHttpExample.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,11 +80,15 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1YjKForIP43e5RlqZmEU8pCz84o" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -88,8 +105,10 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RefinedAttempt" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -215,14 +234,19 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="392" y="91" key="#Project_Structure" timestamp="1583788617091">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="470" y="138" width="800" height="684" key="#Project_Structure" timestamp="1584159850571">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="392" y="91" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1583788617091" />
+    <state x="470" y="138" width="800" height="684" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1584159850571" />
     <state x="1001" y="321" width="398" height="224" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1583450581494">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="1001" y="321" width="398" height="224" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1600.860@0.0.1600.860" timestamp="1583450581494" />
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1584674730657">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584674730657" />
     <state width="1557" height="222" key="GridCell.Tab.0.bottom" timestamp="1583881879227">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -243,6 +267,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="75" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1583787982466" />
+    <state x="621" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1584159778964">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="621" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1584159778964" />
     <state x="182" y="137" key="new project wizard" timestamp="1583788637270">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
