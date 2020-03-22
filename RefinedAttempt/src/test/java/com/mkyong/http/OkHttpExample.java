@@ -6,7 +6,7 @@ package com.mkyong.http;
  * Code that can make a POST request for messages
  * Modify current code to more object oriented and structured
  */
-
+// Registration is not yet working
 import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,34 +14,45 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class OkHttpExample {
 
-    // one instance, reuse
     private final OkHttpClient httpClient = new OkHttpClient();
 
     public static void main(String[] args) throws Exception {
-
+        String authToken = "";
         OkHttpExample obj = new OkHttpExample();
 
+        System.out.println("Register User");
+        obj.registerUser("test", "asdfasdf", "asdfasdf");
+
+        System.out.println("Logging in");
+        authToken = obj.login("test", "asdfasdf");
+
+        System.out.println(authToken);
+
         //System.out.println("Testing 1 - Send Http POST request");
-        //obj.sendPost("Based on an agreement that was reached in 1966 between Iran and Romania to establish a tractor manufacturing company in Iran, the company was created in Tabriz in 1968. The first goal of the company was to manufacture 10,000 units tractors of 45-65 horsepower engines with single and double differential gearboxes. In 1976 Massey Ferguson started to assemble tractors in the company with the rate of 13000 units for each year. At the moment the production capacity has been increased up to 30000 units for each year.[1] On 1987 the factory started to increase its foundry capacity to be able to produce casting products for different industries. Nowadays it has the largest foundry capacity among middle east. In 1990s The factory started to produce small trucks and vans behind its main products. ", "SuperSecretKey");
+        //obj.sendPost("Based on an agreement that was reached in 1966 between Iran and Romania to establish a tractor manufacturing company in Iran, the company was created in Tabriz in 1968. The first goal of the company was to manufacture 10,000 units tractors of 45-65 horsepower engines with single and double differential gearboxes. In 1976 Massey Ferguson started to assemble tractors in the company with the rate of 13000 units for each year. At the moment the production capacity has been increased up to 30000 units for each year.[1] On 1987 the factory started to increase its foundry capacity to be able to produce casting products for different industries. Nowadays it has the largest foundry capacity among middle east. In 1990s The factory started to produce small trucks and vans behind its main products. ", "SuperSecretKey", authToken);
 
         System.out.println("Testing 2 - Send Http GET request");
-        obj.sendGet("51", "SuperSecretKey");
+        obj.sendGet("SuperSecretKey", authToken);
 
     }
 
-    public List<String> sendGet(String msgNum, String key) throws Exception {
+    public List<String> sendGet(String key, String authToken) throws Exception {
         String[] lines = new String[1000];
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:3000/messages")
-                //.url("https://eph.nopesled.com/messages")
-                .addHeader("custom-key", "mkyong")  // add request headers
-                .addHeader("User-Agent", "OkHttp Bot")
+                .addHeader("Authorization", authToken)
+                .url("http://127.0.0.2:3000/messages")
+                //.url("https://eph.nopesled.com/messages")1
+                // .addHeader("User-Agent", "OkHttp Bot")
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -52,29 +63,25 @@ public class OkHttpExample {
 
             String thing =  response.body().string();
 
-            //System.out.println(thing);
-
             Document doc = Jsoup.parse(thing);
 
-            Elements content = doc.getElementsByTag("td");
+            Elements content = doc.getElementsByTag("b");
             List<String> stringList = new ArrayList<>();
 
             for (Element input : content){
+                String poster = input.text().split(":")[0];
                 if (input.text().contains("=")) {
-                    String encryptmessage = input.text().replaceAll("\\s+", "");
-                    //System.out.println(AES.decrypt(encryptmessage, key));
+                    String encryptmessage = input.text().split(":")[1].replaceAll("\\s+", "");
+                    System.out.println(poster + ": "+ AES.decrypt(encryptmessage, key));
                     stringList.add(AES.decrypt(encryptmessage, key));
                 }
             }
-
             return stringList;
-
-
         }
 
     }
 
-    public void sendPost(String message, String key) throws Exception {
+    public void sendPost(String message, String key, String Authtoken) throws Exception {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()
@@ -83,7 +90,8 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:3000/messages")
+                .url("http://127.0.0.2:3000/messages")
+                .addHeader("Authorization", Authtoken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
@@ -94,10 +102,62 @@ public class OkHttpExample {
 
             // Get response body
             //System.out.println(thing);
-
-
         }
-
     }
 
+    public String login(String username, String password) throws Exception {
+        String authenticationToken = "";
+        // form parameters
+        RequestBody formBody = new FormBody.Builder()
+                .add("commit", "login")
+                .add("name", username)
+                .add("password", password )
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://127.0.0.2:3000/authenticate")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(formBody)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            String thing =  response.body().string();
+
+            // Get response body
+            //System.out.println(thing);
+
+            if (thing.contains("{\"auth_token\":")){
+                authenticationToken = thing.split("\"")[3];
+            }
+            return authenticationToken;
+        }
+    }
+
+    public void registerUser(String username, String password, String passwordConfirmation) throws Exception {
+        // form parameters
+        RequestBody formBody = new FormBody.Builder()
+                .add("user[name]", username)
+                .add("user[password]", password )
+                .add("user[password_confirmation]", passwordConfirmation)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://127.0.0.2:3000/user")
+                .post(formBody)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            String thing =  response.body().string();
+
+            System.out.println(thing);
+        }
+    }
 }
+

@@ -64,7 +64,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
     public void refreshMessages() {
         OkHttpExample obj = new OkHttpExample();
         try {
-            for (String s : obj.sendGet("51", "SuperSecretKey")) {
+            for (String s : obj.sendGet("SuperSecretKey", "")) {
                 textArea.append(s + newline);
                 textField.selectAll();
             }
@@ -85,7 +85,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
         OkHttpExample obj = new OkHttpExample();
         try {
-            obj.sendPost("51", "SuperSecretKey");
+            obj.sendPost("51", "SuperSecretKey", "");
         } catch (Exception e) {
             e.printStackTrace();
         }

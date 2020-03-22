@@ -60,7 +60,7 @@ class TextDemo extends JFrame implements ActionListener {
             System.out.println(textArea.getText());
             OkHttpExample obj = new OkHttpExample();
             try {
-                obj.sendPost("51", "SuperSecretKey");
+                obj.sendPost("51", "SuperSecretKey", "");
             } catch (Exception e) {
                 e.printStackTrace();
             }

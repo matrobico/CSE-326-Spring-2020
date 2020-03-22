@@ -8,4 +8,4 @@ RUN apt-get -y install yarn
 RUN yarn install
 RUN gem install rails 
 RUN apt -y install sqlite3
-RUN rails new Ephemeral
+RUN mkdir Ephemeral
