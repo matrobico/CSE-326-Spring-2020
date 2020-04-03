@@ -50,9 +50,9 @@ public class OkHttpExample {
 
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
-                .url("http://127.0.0.2:3000/messages")
+                .url("http://127.0.0.1:3000/messages")
                 //.url("https://eph.nopesled.com/messages")1
-                // .addHeader("User-Agent", "OkHttp Bot")
+                .addHeader("User-Agent", "OkHttp Bot")
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -81,7 +81,7 @@ public class OkHttpExample {
 
     }
 
-    public void sendPost(String message, String key, String Authtoken) throws Exception {
+    public void sendPost(String message, String key, String authToken) throws Exception {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()
@@ -90,8 +90,8 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.2:3000/messages")
-                .addHeader("Authorization", Authtoken)
+                .url("http://127.0.0.1:3000/messages")
+                .addHeader("Authorization", authToken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
@@ -115,7 +115,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.2:3000/authenticate")
+                .url("http://127.0.0.1:3000/authenticate")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
@@ -145,7 +145,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.2:3000/user")
+                .url("http://127.0.0.1:3000/user")
                 .post(formBody)
                 .build();
 

@@ -27,7 +27,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
     protected JTextArea textArea;
     private final static String newline = "\n";
 
-    public ViewMessageList() {
+    public ViewMessageList() throws Exception {
         super(new GridBagLayout());
 
         textField = new JTextField(20);
@@ -61,10 +61,11 @@ public class ViewMessageList extends JPanel implements ActionListener {
      POST request for the entered text. Obviously we don't want that (at least not like
      it is now), so that also needs to be fixed. 
      */
-    public void refreshMessages() {
+    public void refreshMessages() throws Exception {
         OkHttpExample obj = new OkHttpExample();
+        String authToken = obj.login("user3", "asdfasdf");
         try {
-            for (String s : obj.sendGet("SuperSecretKey", "")) {
+            for (String s : obj.sendGet("SuperSecretKey", authToken)) {
                 textArea.append(s + newline);
                 textField.selectAll();
             }
@@ -75,7 +76,11 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent evt) {
         // Testing things out
-        refreshMessages();
+        try {
+            refreshMessages();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /*
         String text = textField.getText();
@@ -85,7 +90,8 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
         OkHttpExample obj = new OkHttpExample();
         try {
-            obj.sendPost("51", "SuperSecretKey", "");
+            String authToken = obj.login("user3", "asdfasdf");
+            obj.sendPost("51", "SuperSecretKey", authToken);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +106,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
      * this method should be invoked from the
      * event dispatch thread.
      */
-    private static void createAndShowGUI() {
+    private static void createAndShowGUI() throws Exception {
         //Create and set up the window.
         JFrame frame = new JFrame("Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,7 +124,11 @@ public class ViewMessageList extends JPanel implements ActionListener {
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI();
+                try {
+                    createAndShowGUI();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
