@@ -51,7 +51,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
         c.weightx = 1.0;
         c.weighty = 1.0;
         add(scrollPane, c);
-        System.out.println("DO YOU SEE ME 2");
 
 
         //createAndShowGUI();

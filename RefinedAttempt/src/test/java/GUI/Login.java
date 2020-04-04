@@ -17,6 +17,7 @@ class LoginDemo extends JFrame implements ActionListener {
     JTextField username_text;
     JPasswordField password_text;
     JButton submit, cancel;
+    boolean value = false;
 
     LoginDemo() {
 
@@ -66,6 +67,10 @@ class LoginDemo extends JFrame implements ActionListener {
         return password_text.getSelectedText().trim();
     }
 
+    public boolean getValue() {
+        return value;
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -88,12 +93,12 @@ class LoginDemo extends JFrame implements ActionListener {
         System.out.println("LOGIN SUCCESSFUL");
         try {
             //new ViewMessageList();
+            value = true;
             dispose();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
 
 }
