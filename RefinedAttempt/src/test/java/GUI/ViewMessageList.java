@@ -27,6 +27,9 @@ public class ViewMessageList extends JPanel implements ActionListener {
     protected JTextArea textArea;
     private final static String newline = "\n";
 
+    OkHttpExample obj = new OkHttpExample();
+
+
     public ViewMessageList() throws Exception {
         super(new GridBagLayout());
 
@@ -48,7 +51,10 @@ public class ViewMessageList extends JPanel implements ActionListener {
         c.weightx = 1.0;
         c.weighty = 1.0;
         add(scrollPane, c);
+        System.out.println("DO YOU SEE ME 2");
 
+
+        //createAndShowGUI();
         refreshMessages();
     }
 
@@ -62,7 +68,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
      it is now), so that also needs to be fixed. 
      */
     public void refreshMessages() throws Exception {
-        OkHttpExample obj = new OkHttpExample();
         String authToken = obj.login("user3", "asdfasdf");
         try {
             for (String s : obj.sendGet("SuperSecretKey", authToken)) {
@@ -82,19 +87,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        /*
-        String text = textField.getText();
-        textArea.append(text + newline);
-        textField.selectAll();
-         */
-
-        OkHttpExample obj = new OkHttpExample();
-        try {
-            String authToken = obj.login("user3", "asdfasdf");
-            obj.sendPost("51", "SuperSecretKey", authToken);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         //Make sure the new text is visible, even if there
         //was a selection in the text area.
@@ -119,7 +111,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -133,4 +125,5 @@ public class ViewMessageList extends JPanel implements ActionListener {
         });
 
     }
+
 }

@@ -4,6 +4,7 @@ import com.mkyong.http.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.View;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -13,7 +14,7 @@ class LoginDemo extends JFrame implements ActionListener {
 
     JPanel panel;
     JLabel user_label, password_label, message;
-    JTextField userName_text;
+    JTextField username_text;
     JPasswordField password_text;
     JButton submit, cancel;
 
@@ -22,7 +23,7 @@ class LoginDemo extends JFrame implements ActionListener {
         // User Label
         user_label = new JLabel();
         user_label.setText("User Name :");
-        userName_text = new JTextField();
+        username_text = new JTextField();
 
         // Password
         password_label = new JLabel();
@@ -37,7 +38,7 @@ class LoginDemo extends JFrame implements ActionListener {
         panel = new JPanel(new GridLayout(3, 1));
 
         panel.add(user_label);
-        panel.add(userName_text);
+        panel.add(username_text);
         panel.add(password_label);
         panel.add(password_text);
 
@@ -57,30 +58,42 @@ class LoginDemo extends JFrame implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-        new LoginDemo();
+    public String getUsername() {
+        return username_text.getText().trim();
     }
+
+    public String getPassword() {
+        return password_text.getSelectedText().trim();
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String userName = userName_text.getText();
+        String username = username_text.getText();
         String password = password_text.getText();
 
-        //System.out.println(userName);
-        //System.out.println(password);
+        // Declaring a authorization token. It should never stay this value if a proper authToken returns
+        String authToken = "NOPE";
+        OkHttpExample obj = new OkHttpExample();
+        try {
+            authToken = obj.login(username, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-    // To-do: Check against database creds that we'll grab after implemented
-        if (userName.trim().equals("admin") && password.trim().equals("admin")) {
-            message.setText(" Hello " + userName);
-            setVisible(false);
-            //new InputTextDemo();
-            new ViewMessageList();
+        while (authToken.equals("NOPE")) {
+            System.out.println("Invalid login...");
+        }
 
-
-        } else {
-            message.setText(" Invalid user.. ");
+        System.out.println("LOGIN SUCCESSFUL");
+        try {
+            //new ViewMessageList();
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
+
 
 }
