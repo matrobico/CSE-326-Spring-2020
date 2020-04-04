@@ -28,10 +28,22 @@ public class LoginDialog extends JDialog {
 
     private final JLabel jlblStatus = new JLabel(" ");
 
+    String authToken;
+    OkHttpExample obj = new OkHttpExample();
+
     public LoginDialog() {
         this(null, true);
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public OkHttpExample getObj() {
+        return obj;
+    }
+
+    // Login GUI setup
     public LoginDialog(final JFrame parent, boolean modal) {
         super(parent, modal);
 
@@ -73,29 +85,31 @@ public class LoginDialog extends JDialog {
         });
 
 
+        // ActionListener for when user clicks "login"
         jbtOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean flag = true;
-                OkHttpExample obj = new OkHttpExample();
+                //boolean flag = true;
 
-                while (flag) {
-                    try {
-                        // Later change to: jpfPassword.getPassword()
-                        obj.login(jtfUsername.getText(), jpfPassword.getText());
-                        flag = false;
-                    } catch (Exception ex) {
-                        jlblStatus.setText("Invalid username or password");
-                        //ex.printStackTrace();
-                    }
-
+                try {
+                    // Later change to: jpfPassword.getPassword()
+                    //System.out.println("DO YOU SEE ME 1?");
+                    authToken = obj.login(jtfUsername.getText(), jpfPassword.getText());
+                    //System.out.println("DO YOU SEE ME 2?");
+                    //flag = false;
+                } catch (Exception ex) {
+                    jlblStatus.setText("Invalid username or password");
+                    //ex.printStackTrace();
                 }
+
+
 
                 parent.setVisible(true);
                 setVisible(false);
             }
         });
 
+        // ActionListener for when user clicks "cancel"
         jbtCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,10 +119,11 @@ public class LoginDialog extends JDialog {
             }
         });
 
+        // ActionListener for when user clicks "register"
         jbtRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OkHttpExample obj = new OkHttpExample();
+                //OkHttpExample obj = new OkHttpExample();
 
                 try {
                     obj.registerUser(jtfUsername.getText(), jpfPassword.getText(), jpfPassword.getText());

@@ -10,10 +10,15 @@ import java.awt.event.ActionEvent;
 // Main class for the demo. Run this to start the demo.
 public class Demo extends JFrame {
     private LoginDialog loginDialog;
+    private static String authToken;
+    private static OkHttpExample obj;
 
+    // Constructor for our Demo class
     public Demo() {
         loginDialog = new LoginDialog(this, true);
         loginDialog.setVisible(true);
+        authToken = loginDialog.getAuthToken();
+        obj = loginDialog.getObj();
     }
 
     public static void main(String[] args) throws Exception {
@@ -34,6 +39,9 @@ public class Demo extends JFrame {
             public void run() {
 
                 new Demo();
+                String[] args = {authToken};
+                //System.out.print(authToken);
+
                 //JFrame frame = new Demo();
                 //frame.getContentPane().setBackground(Color.BLACK);
                 //frame.setTitle("Logged In");
@@ -43,7 +51,7 @@ public class Demo extends JFrame {
 
 
                 try {
-                    new ViewMessageList().main(null);
+                    new ViewMessageList().main(args, obj);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -23,12 +23,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ViewMessageList extends JPanel implements ActionListener {
+    private final JLabel jlbltextArea = new JLabel("Message");
+
     protected JTextField textField;
+    // textArea is where the user can enter their text
     protected JTextArea textArea;
     private final static String newline = "\n";
 
-    OkHttpExample obj = new OkHttpExample();
-
+    private static OkHttpExample obj = new OkHttpExample();
+    public static String authToken;
 
     public ViewMessageList() throws Exception {
         super(new GridBagLayout());
@@ -45,6 +48,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
         c.gridwidth = GridBagConstraints.REMAINDER;
 
         c.fill = GridBagConstraints.HORIZONTAL;
+        add(jlbltextArea, c);
         add(textField, c);
 
         c.fill = GridBagConstraints.BOTH;
@@ -54,7 +58,8 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
 
         //createAndShowGUI();
-        refreshMessages();
+        //System.out.println(authToken);
+        //refreshMessages();
     }
 
     /*
@@ -67,8 +72,9 @@ public class ViewMessageList extends JPanel implements ActionListener {
      it is now), so that also needs to be fixed. 
      */
     public void refreshMessages() throws Exception {
-        String authToken = obj.login("user3", "asdfasdf");
+        //String authToken = obj.login("user3", "asdfasdf");
         try {
+            //System.out.println(authToken);
             for (String s : obj.sendGet("SuperSecretKey", authToken)) {
                 textArea.append(s + newline);
                 textField.selectAll();
@@ -82,6 +88,8 @@ public class ViewMessageList extends JPanel implements ActionListener {
         // Testing things out
         try {
             refreshMessages();
+            System.out.println(textField.getText());
+            obj.sendPost(textField.getText(), "SuperSecretKey", authToken);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,8 +109,10 @@ public class ViewMessageList extends JPanel implements ActionListener {
         //Create and set up the window.
         JFrame frame = new JFrame("Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         //Add contents to the window.
+        System.out.println("COUNT");
         frame.add(new ViewMessageList());
 
         //Display the window.
@@ -110,9 +120,12 @@ public class ViewMessageList extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args, OkHttpExample object) throws Exception {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
+        //System.out.print(args[0]);
+        authToken = args[0];
+        obj = object;
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
