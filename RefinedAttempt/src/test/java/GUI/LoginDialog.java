@@ -1,5 +1,10 @@
 package GUI;
 
+/*
+Structure from: https://stackoverflow.com/questions/22959558/how-can-i-make-code-wait-for-a-gui-to-finish
+Modified to fit our needs, more extensive modification underway
+ */
+
 import com.mkyong.http.OkHttpExample;
 
 import javax.swing.*;
@@ -19,6 +24,7 @@ public class LoginDialog extends JDialog {
 
     private final JButton jbtOk = new JButton("Login");
     private final JButton jbtCancel = new JButton("Cancel");
+    private final JButton jbtRegister = new JButton("Register");
 
     private final JLabel jlblStatus = new JLabel(" ");
 
@@ -44,6 +50,7 @@ public class LoginDialog extends JDialog {
         JPanel p2 = new JPanel();
         p2.add(jbtOk);
         p2.add(jbtCancel);
+        p2.add(jbtRegister);
 
         JPanel p5 = new JPanel(new BorderLayout());
         p5.add(p2, BorderLayout.CENTER);
@@ -70,12 +77,8 @@ public class LoginDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean flag = true;
-                /*
-                if (Arrays.equals("stackoverflow".toCharArray(), jpfPassword.getPassword())
-                        && "stackoverflow".equals(jtfUsername.getText())) {
+                OkHttpExample obj = new OkHttpExample();
 
-                 */
-                    OkHttpExample obj = new OkHttpExample();
                 while (flag) {
                     try {
                         // Later change to: jpfPassword.getPassword()
@@ -85,17 +88,33 @@ public class LoginDialog extends JDialog {
                         jlblStatus.setText("Invalid username or password");
                         //ex.printStackTrace();
                     }
-                    parent.setVisible(true);
-                    setVisible(false);
+
                 }
+
+                parent.setVisible(true);
+                setVisible(false);
             }
         });
+
         jbtCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 parent.dispose();
                 System.exit(0);
+            }
+        });
+
+        jbtRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OkHttpExample obj = new OkHttpExample();
+
+                try {
+                    obj.registerUser(jtfUsername.getText(), jpfPassword.getText(), jpfPassword.getText());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
