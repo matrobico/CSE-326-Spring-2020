@@ -43,6 +43,10 @@ public class LoginDialog extends JDialog {
         return obj;
     }
 
+    public String getUser() {
+        return jtfUsername.getText();
+    }
+
     // Login GUI setup
     public LoginDialog(final JFrame parent, boolean modal) {
         super(parent, modal);

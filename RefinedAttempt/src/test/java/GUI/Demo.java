@@ -12,6 +12,7 @@ public class Demo extends JFrame {
     private LoginDialog loginDialog;
     private static String authToken;
     private static OkHttpExample obj;
+    private static String user;
 
     // Constructor for our Demo class
     public Demo() {
@@ -19,6 +20,8 @@ public class Demo extends JFrame {
         loginDialog.setVisible(true);
         authToken = loginDialog.getAuthToken();
         obj = loginDialog.getObj();
+        user = loginDialog.getUser();
+        System.out.println(user);
     }
 
     public static void main(String[] args) throws Exception {
@@ -42,7 +45,7 @@ public class Demo extends JFrame {
                 String[] args = {authToken};
 
                 try {
-                    new ViewMessageList().main(args, obj);
+                    new ViewMessageList().main(args, obj, user);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -34,6 +34,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
     private static OkHttpExample obj = new OkHttpExample();
     public static String authToken;
+    public static String user;
 
     public ViewMessageList() throws Exception {
         super(new GridBagLayout());
@@ -71,7 +72,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
                     e.printStackTrace();
                 }
             }
-        }, 0, 5000);
+        }, 0, 15000);
     }
 
     /*
@@ -87,6 +88,8 @@ public class ViewMessageList extends JPanel implements ActionListener {
         //String authToken = obj.login("user3", "asdfasdf");
         try {
             //System.out.println(authToken);
+            textArea.setText("");
+            textArea.setLineWrap(true);
             for (String s : obj.sendGet("SuperSecretKey", authToken)) {
                 textArea.append(s + newline);
                 textField.selectAll();
@@ -101,7 +104,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
         try {
             //refreshMessages();
             System.out.println(textField.getText());
-            obj.sendPost(textField.getText(), "SuperSecretKey", authToken);
+            obj.sendPost(textField.getText(), "SuperSecretKey", authToken, user);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,12 +134,13 @@ public class ViewMessageList extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args, OkHttpExample object) throws Exception {
+    public static void main(String[] args, OkHttpExample object, String username) throws Exception {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
         //System.out.print(args[0]);
         authToken = args[0];
         obj = object;
+        user = username;
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {

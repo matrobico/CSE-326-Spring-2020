@@ -13,6 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -72,6 +73,7 @@ public class OkHttpExample {
             for (Element input : content){
                 String poster = input.text().split(":")[0];
                 if (input.text().contains("=")) {
+                    System.out.println("This is the input: " + input);
                     String encryptmessage = input.text().split(":")[1].replaceAll("\\s+", "");
                     System.out.println(poster + ": "+ AES.decrypt(encryptmessage, key));
                     stringList.add(AES.decrypt(encryptmessage, key));
@@ -82,11 +84,11 @@ public class OkHttpExample {
 
     }
 
-    public void sendPost(String message, String key, String authToken) throws Exception {
+    public void sendPost(String message, String key, String authToken, String user) throws Exception {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()
-                .add("message[title]", "Matthew: ")
+                .add("message[title]", user + ": ")
                 .add("message[text]", encryptedMessage )
                 .build();
 
