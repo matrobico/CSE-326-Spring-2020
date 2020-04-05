@@ -24,6 +24,7 @@ import java.util.List;
 public class OkHttpExample {
 
     private final OkHttpClient httpClient = new OkHttpClient();
+    //public String authToken;
 
     public static void main(String[] args) throws Exception {
         String authToken = "";
@@ -47,7 +48,7 @@ public class OkHttpExample {
 
     public List<String> sendGet(String key, String authToken) throws Exception {
         String[] lines = new String[1000];
-
+        //System.out.print(authToken);
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
                 .url("http://127.0.0.1:3000/messages")
@@ -105,9 +106,14 @@ public class OkHttpExample {
         }
     }
 
+    /* Method to login. Returns the authentication token if logic was
+     * successful, null otherwise
+     */
     public String login(String username, String password) throws Exception {
         String authenticationToken = "";
         // form parameters
+        //System.out.println(username);
+        //System.out.println(password);
         RequestBody formBody = new FormBody.Builder()
                 .add("commit", "login")
                 .add("name", username)
@@ -122,7 +128,13 @@ public class OkHttpExample {
 
         try (Response response = httpClient.newCall(request).execute()) {
 
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            // The response will not be successful if the login did not work. Returning
+            // null here allows the use of a comparison statement in other parts of the
+            // program to be able to check if the login was successful or not
+            if (!response.isSuccessful()) {
+                return null;
+                //throw new IOException("Unexpected code " + response);
+            }
 
             String thing =  response.body().string();
 
@@ -132,6 +144,11 @@ public class OkHttpExample {
             if (thing.contains("{\"auth_token\":")){
                 authenticationToken = thing.split("\"")[3];
             }
+
+            //if (authenticationToken.matches(".*[a-z].*")) {
+            //    System.out.println("DO YOU SEE ME 1?");
+            //}
+            //System.out.println("DO YOU SEE ME 2?");
             return authenticationToken;
         }
     }
