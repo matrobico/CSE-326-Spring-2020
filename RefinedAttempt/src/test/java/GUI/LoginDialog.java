@@ -93,19 +93,21 @@ public class LoginDialog extends JDialog {
 
                 try {
                     // Later change to: jpfPassword.getPassword()
-                    //System.out.println("DO YOU SEE ME 1?");
                     authToken = obj.login(jtfUsername.getText(), jpfPassword.getText());
-                    //System.out.println("DO YOU SEE ME 2?");
-                    //flag = false;
+                    if (authToken == null) {
+                        jlblStatus.setText("Invalid username or password");
+                        System.out.println("PROGRESS");
+                    } else {
+                        parent.setVisible(true);
+                        setVisible(false);
+                    }
+
                 } catch (Exception ex) {
                     jlblStatus.setText("Invalid username or password");
                     //ex.printStackTrace();
                 }
 
 
-
-                parent.setVisible(true);
-                setVisible(false);
             }
         });
 
@@ -123,7 +125,6 @@ public class LoginDialog extends JDialog {
         jbtRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //OkHttpExample obj = new OkHttpExample();
 
                 try {
                     obj.registerUser(jtfUsername.getText(), jpfPassword.getText(), jpfPassword.getText());

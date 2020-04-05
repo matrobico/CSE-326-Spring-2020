@@ -40,15 +40,6 @@ public class Demo extends JFrame {
 
                 new Demo();
                 String[] args = {authToken};
-                //System.out.print(authToken);
-
-                //JFrame frame = new Demo();
-                //frame.getContentPane().setBackground(Color.BLACK);
-                //frame.setTitle("Logged In");
-                //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //frame.setLocationRelativeTo(null);
-                //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
 
                 try {
                     new ViewMessageList().main(args, obj);

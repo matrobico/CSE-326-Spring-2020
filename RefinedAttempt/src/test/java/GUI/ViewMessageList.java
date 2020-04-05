@@ -112,7 +112,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         //Add contents to the window.
-        System.out.println("COUNT");
         frame.add(new ViewMessageList());
 
         //Display the window.
