@@ -96,7 +96,7 @@ public class LoginDialog extends JDialog {
                     authToken = obj.login(jtfUsername.getText(), jpfPassword.getText());
                     if (authToken == null) {
                         jlblStatus.setText("Invalid username or password");
-                        System.out.println("PROGRESS");
+                        //System.out.println("PROGRESS");
                     } else {
                         parent.setVisible(true);
                         setVisible(false);
