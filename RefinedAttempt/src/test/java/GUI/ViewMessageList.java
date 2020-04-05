@@ -21,6 +21,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class ViewMessageList extends JPanel implements ActionListener {
     private final JLabel jlbltextArea = new JLabel("Message");
@@ -59,7 +61,17 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
         //createAndShowGUI();
         //System.out.println(authToken);
-        //refreshMessages();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    refreshMessages();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 5000);
     }
 
     /*
@@ -87,7 +99,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         // Testing things out
         try {
-            refreshMessages();
+            //refreshMessages();
             System.out.println(textField.getText());
             obj.sendPost(textField.getText(), "SuperSecretKey", authToken);
         } catch (Exception e) {
