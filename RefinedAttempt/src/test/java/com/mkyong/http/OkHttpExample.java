@@ -52,7 +52,7 @@ public class OkHttpExample {
         //System.out.print(authToken);
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
-                .url("http://127.0.0.1:3000/messages")
+                .url("https://eph.nopesled.com/messages")
                 //.url("https://eph.nopesled.com/messages")1
                 .addHeader("User-Agent", "OkHttp Bot")
                 .build();
@@ -76,7 +76,7 @@ public class OkHttpExample {
                     System.out.println("This is the input: " + input);
                     String encryptmessage = input.text().split(":")[1].replaceAll("\\s+", "");
                     System.out.println(poster + ": "+ AES.decrypt(encryptmessage, key));
-                    stringList.add(AES.decrypt(encryptmessage, key));
+                    stringList.add(poster + ": " + AES.decrypt(encryptmessage, key));
                 }
             }
             return stringList;
@@ -93,7 +93,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:3000/messages")
+                .url("https://eph.nopesled.com/messages")
                 .addHeader("Authorization", authToken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
@@ -123,7 +123,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:3000/authenticate")
+                .url("https://eph.nopesled.com/authenticate")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
@@ -164,7 +164,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:3000/user")
+                .url("https://eph.nopesled.com/user")
                 .post(formBody)
                 .build();
 
