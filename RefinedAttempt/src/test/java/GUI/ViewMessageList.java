@@ -60,6 +60,9 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
         //createAndShowGUI();
         //System.out.println(authToken);
+        refreshMessages();
+
+        /*
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -71,6 +74,10 @@ public class ViewMessageList extends JPanel implements ActionListener {
                 }
             }
         }, 0, 15000);
+
+         */
+
+
     }
 
     /*
@@ -101,8 +108,19 @@ public class ViewMessageList extends JPanel implements ActionListener {
         // Testing things out
         try {
             System.out.println(textField.getText());
+<<<<<<< HEAD
             obj.sendMessage(textField.getText(), "SuperSecretKey", authToken, user);
             Thread.sleep(2000);
+=======
+            obj.sendPost(textField.getText(), "SuperSecretKey", authToken, user);
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            refreshMessages();
+>>>>>>> 34a76646e84f7b809055b78111d58e7a6e1c258a
         } catch (Exception e) {
             e.printStackTrace();
         }
