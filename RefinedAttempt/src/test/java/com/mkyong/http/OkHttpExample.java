@@ -7,53 +7,34 @@ package com.mkyong.http;
  * Modify current code to more object oriented and structured
  */
 // Registration is not yet working
-import okhttp3.*;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.awt.*;
+import okhttp3.*;
+import org.json.*;
+
 import java.io.IOException;
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
+
 public class OkHttpExample {
+
+    String url = "http://127.0.0.2:3000";
 
     private final OkHttpClient httpClient = new OkHttpClient();
     //public String authToken;
 
     public static void main(String[] args) throws Exception {
-        String authToken = "";
-        OkHttpExample obj = new OkHttpExample();
-
-        System.out.println("Register User");
-        obj.registerUser("user3", "asdfasdf", "asdfasdf");
-
-        System.out.println("Logging in");
-        authToken = obj.login("user3", "asdfasdf");
-
-        System.out.println(authToken);
-
-        //System.out.println("Testing 1 - Send Http POST request");
-        //obj.sendPost("Based on an agreement that was reached in 1966 between Iran and Romania to establish a tractor manufacturing company in Iran, the company was created in Tabriz in 1968. The first goal of the company was to manufacture 10,000 units tractors of 45-65 horsepower engines with single and double differential gearboxes. In 1976 Massey Ferguson started to assemble tractors in the company with the rate of 13000 units for each year. At the moment the production capacity has been increased up to 30000 units for each year.[1] On 1987 the factory started to increase its foundry capacity to be able to produce casting products for different industries. Nowadays it has the largest foundry capacity among middle east. In 1990s The factory started to produce small trucks and vans behind its main products. ", "SuperSecretKey", authToken);
-
-        System.out.println("Testing 2 - Send Http GET request");
-        obj.sendGet("SuperSecretKey", authToken);
-
+        OkHttpExample test = new OkHttpExample();
+        String authToken = test.login("Shad", "asdfasdf");
+        test.createGroup("test", "asdfasdf", authToken);
     }
 
-    public List<String> sendGet(String key, String authToken) throws Exception {
+    public List<String> getMessages(String key, String authToken) throws Exception {
         String[] lines = new String[1000];
         //System.out.print(authToken);
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
-                .url("https://eph.nopesled.com/messages")
-                //.url("https://eph.nopesled.com/messages")1
+                .url(url + "/groups/4/messages")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .build();
 
@@ -63,28 +44,39 @@ public class OkHttpExample {
 
             // Get response body
 
-            String thing =  response.body().string();
+            String jsonString =  response.body().string();
+            List<String> messageList = new ArrayList<>();
 
-            Document doc = Jsoup.parse(thing);
+            System.out.println(jsonString);
 
-            Elements content = doc.getElementsByTag("b");
-            List<String> stringList = new ArrayList<>();
+            JSONArray json = new JSONArray(jsonString);
 
-            for (Element input : content){
-                String poster = input.text().split(":")[0];
-                if (input.text().contains("=")) {
-                    System.out.println("This is the input: " + input);
-                    String encryptmessage = input.text().split(":")[1].replaceAll("\\s+", "");
-                    System.out.println(poster + ": "+ AES.decrypt(encryptmessage, key));
-                    stringList.add(poster + ": " + AES.decrypt(encryptmessage, key));
-                }
+            for (int i = 0; i < json.length(); i++){
+                String username = json.getJSONObject(i).getString("title");
+                String message = json.getJSONObject(i).getString("text");
+                messageList.add(username + AES.decrypt(message, key));
             }
-            return stringList;
+
+
+//            Document doc = Jsoup.parse(thing);
+//            Elements content = doc.getElementsByTag("b");
+//            List<String> stringList = new ArrayList<>();
+//
+//            for (Element input : content){
+//                String poster = input.text().split(":")[0];
+//                if (input.text().contains("=")) {
+//                    System.out.println("This is the input: " + input);
+//                    String encryptmessage = input.text().split(":")[1].replaceAll("\\s+", "");
+//                    System.out.println(poster + ": "+ AES.decrypt(encryptmessage, key));
+//                    stringList.add(poster + ": " + AES.decrypt(encryptmessage, key));
+//                }
+//            }
+            return messageList;
         }
 
     }
 
-    public void sendPost(String message, String key, String authToken, String user) throws Exception {
+    public void sendMessage(String message, String key, String authToken, String user) throws Exception {
         String encryptedMessage = AES.encrypt(message, key) ;
         // form parameters
         RequestBody formBody = new FormBody.Builder()
@@ -93,7 +85,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://eph.nopesled.com/messages")
+                .url(url + "/groups/4/messages")
                 .addHeader("Authorization", authToken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
@@ -123,7 +115,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://eph.nopesled.com/authenticate")
+                .url(url + "/authenticate")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
@@ -164,7 +156,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://eph.nopesled.com/user")
+                .url(url + "/user")
                 .post(formBody)
                 .build();
 
@@ -176,6 +168,28 @@ public class OkHttpExample {
             String thing =  response.body().string();
 
             System.out.println(thing);
+        }
+    }
+
+    public void createGroup(String groupName, String password, String authToken) throws Exception {
+        // form parameters
+        RequestBody formBody = new FormBody.Builder()
+                .add("group[title]", groupName)
+                .add("group[password]", password )
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url + "/groups")
+                .addHeader("Authorization", authToken)
+                .post(formBody)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            //System.out.println(thing);
         }
     }
 }
