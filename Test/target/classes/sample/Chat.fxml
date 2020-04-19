@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Pane layoutX="41.0" layoutY="337.0">
+         <children>
+            <TextField fx:id="msg" layoutX="-2.0" onAction="#onEnter" prefHeight="30.0" prefWidth="296.0" />
+            <Button layoutX="466.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleSendChat" prefHeight="30.0" prefWidth="93.0" text="Send" />
+         </children>
+      </Pane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextArea fx:id="display" prefHeight="300.0" prefWidth="497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <ListView layoutX="503.0" prefHeight="300.0" prefWidth="137.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
