@@ -15,18 +15,26 @@ import javax.swing.*;
 
 public class Main extends Application{
 
-        @Override
-        public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
-            primaryStage.setTitle("Ephemeral");
-            primaryStage.setScene(new Scene(root, 300, 275));
-            primaryStage.show();
+    /**
+     * This is where everything starts. The user will be presented with the "Ephemeral.fxml" GUI
+     * when they start the application. This function serves to load our beginning .fxml UI.
+     *
+     * The buttons on this screen are handled in "Controller.java". The GUIs for the respective
+     * components are separate files.
+     */
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
+        primaryStage.setTitle("Ephemeral");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+        primaryStage.setMaximized(true);
 
-        }
+    }
 
 
-        public static void main(String[] args) {
-            launch(args);
-        }
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }
