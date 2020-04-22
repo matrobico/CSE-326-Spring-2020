@@ -18,7 +18,7 @@ import java.util.List;
 
 public class OkHttpExample {
 
-    String url = "http://127.0.0.2:3000";
+    String url = "http://127.0.0.1:3000";
 
     private final OkHttpClient httpClient = new OkHttpClient();
     //public String authToken;

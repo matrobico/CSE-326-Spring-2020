@@ -32,15 +32,17 @@ public class Controller {
     @FXML
     private TextField user;
     @FXML
-    private PasswordField pswd;
+    private PasswordField createUser_password;
     @FXML
-    private PasswordField repswd;
+    private PasswordField createUser_repassword;
     @FXML
     private Label label2;
     @FXML
     private TextField msg;
     @FXML
     private TextArea display;
+
+    OkHttpExample obj = new OkHttpExample();
 
 
     /**
@@ -50,16 +52,32 @@ public class Controller {
      * and verified. If successful, they will continue. If not successful, they will be
      * notified and cannot proceed until a successful login.
      */
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) throws IOException {
-        System.out.println(pwd.getText());
-        System.out.println(usr.getText());
-        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
-        Scene chatViewScene = new Scene(chatViewParent);
+    @FXML protected void handleSubmitButtonAction(ActionEvent event) throws Exception {
+        String authToken;
+        String username = usr.getText();
+        String password = pwd.getText();
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setMaximized(true);
-        window.setScene(chatViewScene);
-        window.show();
+        try {
+            // Later change to: jpfPassword.getPassword()
+            authToken = obj.login(username, password);
+            if (authToken == null) {
+                System.out.println("BEEP 0");
+                System.exit(0);
+            } else {
+                Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
+                Scene chatViewScene = new Scene(chatViewParent);
+
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setMaximized(true);
+                window.setScene(chatViewScene);
+                window.show();
+            }
+
+        } catch (Exception ex) {
+            System.out.println("BEEP 1");
+            System.exit(0);
+        }
+
     }
 
     @FXML protected void handleCreateUserButtonAction(ActionEvent event) throws IOException {
@@ -82,16 +100,17 @@ public class Controller {
 
      @FXML public void handleKeyReleased(KeyEvent e){
             Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
-            Matcher matcher = pattern.matcher(pswd.getText());
+            Matcher matcher = pattern.matcher(createUser_password.getText());
 
             //boolean hasUppercase = !pswd.equals(pswd.getCharacters().toString().toLowerCase());
-            int hasUppercase = pswd.getText().compareTo(pswd.getText().toLowerCase());
+            int hasUppercase = createUser_password.getText().compareTo(createUser_password.getText().toLowerCase());
             //System.out.println(hasUppercase);
 
-         if(pswd.getLength() < 8 && repswd.getLength() < 8){
+         if(createUser_password.getLength() < 8 && createUser_repassword.getLength() < 8){
              label2.setText("Length of password should be 8 or more");
             }
-         else if(pswd.getText() != null && repswd.getText() != null && !pswd.getText().equals(repswd.getText())){
+         else if(createUser_password.getText() != null && createUser_repassword.getText() != null &&
+                 !createUser_password.getText().equals(createUser_repassword.getText())){
              label2.setText("The passwords do not match! Please try again.");
             }
          else if(matcher.matches()){

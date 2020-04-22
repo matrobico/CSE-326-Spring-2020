@@ -35,7 +35,7 @@
       </Label>
       <ButtonBar layoutX="209.0" layoutY="307.0" prefHeight="40.0" prefWidth="612.0">
         <buttons>
-          <Button minWidth="22.0" mnemonicParsing="false" prefHeight="25.0" text="Create User" />
+          <Button minWidth="22.0" mnemonicParsing="false" prefHeight="25.0" onAction="#handleRegisterButtonAction" text="Register" />
             <Label fx:id="label2" prefHeight="17.0" prefWidth="344.0" />
         </buttons>
       </ButtonBar>

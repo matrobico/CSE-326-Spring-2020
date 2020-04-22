@@ -21,10 +21,10 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="170.0" text="Username:" />
                   <TextField fx:id="user" layoutX="110.0" layoutY="66.0" GridPane.columnIndex="1" />
-                  <PasswordField fx:id="pswd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="createUser_password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label layoutX="10.0" layoutY="25.0" prefHeight="17.0" prefWidth="170.0" text="Password:" GridPane.rowIndex="1" />
                   <Label layoutX="10.0" layoutY="70.0" prefHeight="17.0" prefWidth="170.0" text="Reenter Password" GridPane.rowIndex="2" />
-                  <PasswordField fx:id="repswd" layoutX="110.0" layoutY="66.0" onKeyReleased="#handleKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="createUser_repassword" layoutX="110.0" layoutY="66.0" onKeyReleased="#handleKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children></VBox>
