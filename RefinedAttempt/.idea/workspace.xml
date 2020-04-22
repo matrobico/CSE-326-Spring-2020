@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99134e4c-b82c-48ec-94b6-79ec50594e73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../JavaFX/.idea/libraries/Maven__org_openjfx_javafx_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20190722.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/JavaFX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/JavaFX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RefinedAttempt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RefinedAttempt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GUI/ViewMessageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GUI/ViewMessageList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mkyong/http/OkHttpExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mkyong/http/OkHttpExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/LoginDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/LoginDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/TextDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/OkHttpExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/OkHttpExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +23,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">

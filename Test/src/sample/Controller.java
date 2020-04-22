@@ -62,7 +62,7 @@ public class Controller {
             authToken = obj.login(username, password);
             if (authToken == null) {
                 System.out.println("BEEP 0");
-                System.exit(0);
+                label2.setText("Incorrect password");
             } else {
                 Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
                 Scene chatViewScene = new Scene(chatViewParent);
@@ -75,7 +75,7 @@ public class Controller {
 
         } catch (Exception ex) {
             System.out.println("BEEP 1");
-            System.exit(0);
+            ex.printStackTrace();
         }
 
     }
