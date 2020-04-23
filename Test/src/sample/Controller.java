@@ -43,6 +43,7 @@ public class Controller {
     private TextArea display;
 
     OkHttpExample obj = new OkHttpExample();
+    String authToken;
 
 
     /**
@@ -53,29 +54,23 @@ public class Controller {
      * notified and cannot proceed until a successful login.
      */
     @FXML protected void handleSubmitButtonAction(ActionEvent event) throws Exception {
-        String authToken;
+        //String authToken;
         String username = usr.getText();
         String password = pwd.getText();
 
-        try {
-            // Later change to: jpfPassword.getPassword()
-            authToken = obj.login(username, password);
-            if (authToken == null) {
-                System.out.println("BEEP 0");
-                label2.setText("Incorrect password");
-            } else {
-                Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
-                Scene chatViewScene = new Scene(chatViewParent);
+        // Later change to: jpfPassword.getPassword()
+        authToken = obj.login(username, password);
+        if (authToken == null) {
+            System.out.println("BEEP 0");
+            label.setText("Incorrect password");
+        } else {
+            Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
+            Scene chatViewScene = new Scene(chatViewParent);
 
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                window.setMaximized(true);
-                window.setScene(chatViewScene);
-                window.show();
-            }
-
-        } catch (Exception ex) {
-            System.out.println("BEEP 1");
-            ex.printStackTrace();
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setMaximized(true);
+            window.setScene(chatViewScene);
+            window.show();
         }
 
     }
