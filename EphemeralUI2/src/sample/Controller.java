@@ -77,6 +77,15 @@ public class Controller {
         window.show();
     }
 
+    @FXML protected void handleGroupButtonAction(ActionEvent event) throws IOException {
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Groups.fxml"));
+        Scene chatViewScene = new Scene(chatViewParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(chatViewScene);
+        window.show();
+    }
+
      @FXML public void handleKeyReleased(KeyEvent e){
             Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
             Matcher matcher = pattern.matcher(pswd.getText());
@@ -102,23 +111,48 @@ public class Controller {
         }
 
 
-     /*@FXML protected void handleLogin(ActionEvent e){
-         String authToken = "";
-         OkHttpExample obj = new OkHttpExample();
+     /*@FXML protected String handleLogin(ActionEvent e){
+       String authenticationToken = "";
+        // form parameters
+        //System.out.println(username);
+        //System.out.println(password);
+        RequestBody formBody = new FormBody.Builder()
+                .add("commit", "login")
+                .add("name", username)
+                .add("password", password )
+                .build();
 
-         System.out.println("Register User");
-         obj.registerUser("user3", "asdfasdf", "asdfasdf");
+        Request request = new Request.Builder()
+                .url(url + "/authenticate")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(formBody)
+                .build();
 
-         System.out.println("Logging in");
-         authToken = obj.login("user3", "asdfasdf");
+        try (Response response = httpClient.newCall(request).execute()) {
 
-         System.out.println(authToken);
+            // The response will not be successful if the login did not work. Returning
+            // null here allows the use of a comparison statement in other parts of the
+            // program to be able to check if the login was successful or not
+            if (!response.isSuccessful()) {
+                return null;
+                //throw new IOException("Unexpected code " + response);
+            }
 
-         //System.out.println("Testing 1 - Send Http POST request");
-         //obj.sendPost("Based on an agreement that was reached in 1966 between Iran and Romania to establish a tractor manufacturing company in Iran, the company was created in Tabriz in 1968. The first goal of the company was to manufacture 10,000 units tractors of 45-65 horsepower engines with single and double differential gearboxes. In 1976 Massey Ferguson started to assemble tractors in the company with the rate of 13000 units for each year. At the moment the production capacity has been increased up to 30000 units for each year.[1] On 1987 the factory started to increase its foundry capacity to be able to produce casting products for different industries. Nowadays it has the largest foundry capacity among middle east. In 1990s The factory started to produce small trucks and vans behind its main products. ", "SuperSecretKey", authToken);
+            String thing =  response.body().string();
 
-         System.out.println("Testing 2 - Send Http GET request");
-         obj.sendGet("SuperSecretKey", authToken);
+            // Get response body
+            //System.out.println(thing);
+
+            if (thing.contains("{\"auth_token\":")){
+                authenticationToken = thing.split("\"")[3];
+            }
+
+            //if (authenticationToken.matches(".*[a-z].*")) {
+            //    System.out.println("DO YOU SEE ME 1?");
+            //}
+            //System.out.println("DO YOU SEE ME 2?");
+            return authenticationToken;
+            }
      }*/
 
 
@@ -130,6 +164,6 @@ public class Controller {
 
 
      @FXML protected void onEnter(ActionEvent event){
-            display.setText(msg.getText());
+            display.setText(usr.getText() + msg.getText());
      }
 }
