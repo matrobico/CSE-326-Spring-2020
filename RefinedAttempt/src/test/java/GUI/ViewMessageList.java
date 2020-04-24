@@ -13,8 +13,6 @@ with it. This is a makeshift GUI for now. It exists for demo purposes.
 package GUI;
 
 import com.mkyong.http.*;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import javax.swing.*;
 import java.awt.*;
@@ -97,7 +95,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
             //System.out.println(authToken);
             textArea.setText("");
             textArea.setLineWrap(true);
-            for (String s : obj.sendGet("SuperSecretKey", authToken)) {
+            for (String s : obj.getMessages("SuperSecretKey", authToken)) {
                 textArea.append(s + newline);
                 textField.selectAll();
             }
@@ -110,8 +108,19 @@ public class ViewMessageList extends JPanel implements ActionListener {
         // Testing things out
         try {
             System.out.println(textField.getText());
+<<<<<<< HEAD
+            obj.sendMessage(textField.getText(), "SuperSecretKey", authToken, user);
+            Thread.sleep(2000);
+=======
             obj.sendPost(textField.getText(), "SuperSecretKey", authToken, user);
             Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            refreshMessages();
+>>>>>>> 34a76646e84f7b809055b78111d58e7a6e1c258a
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,7 +130,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         //Make sure the new text is visible, even if there
         //was a selection in the text area.

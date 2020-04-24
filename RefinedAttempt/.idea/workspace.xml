@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99134e4c-b82c-48ec-94b6-79ec50594e73" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/config/master.key" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/config/master.key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/db/development.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/db/development.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/log/development.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/TokenAuthTest/tmp/cache/bootsnap-load-path-cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/TokenAuthTest/tmp/cache/bootsnap-load-path-cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/EphemralUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/EphemralUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mkyong/http/OkHttpExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mkyong/http/OkHttpExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/OkHttpExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/OkHttpExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +23,27 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFX" />
   </component>
-  <component name="RunManager" selected="Application.OkHttpExample">
+  <component name="RunManager" selected="Application.Demo">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Demo" />
+      <module name="RefinedAttempt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Login" />
       <module name="RefinedAttempt" />
@@ -97,6 +98,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Demo" />
         <item itemvalue="Application.OkHttpExample" />
         <item itemvalue="Application.ViewMessageList" />
         <item itemvalue="Application.LoginDemo" />
@@ -131,39 +133,39 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="546" y="92" width="818" height="930" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1584859563968" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1584674762587">
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1587073425388">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584674762587" />
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom" timestamp="1584860238295">
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1587073425388" />
+    <state width="1874" height="446" key="GridCell.Tab.0.bottom" timestamp="1587074768695">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1583871324962" />
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1584860238295" />
+    <state width="1874" height="446" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1587074768695" />
     <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1584747522280" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom/1680.0.1366.1024/0.0.1680.1050@0.0.1680.1050" timestamp="1583901659365" />
     <state width="1638" height="222" key="GridCell.Tab.0.bottom/1680.23.1366.1001/0.23.1680.1027@0.23.1680.1027" timestamp="1583909370163" />
-    <state width="1874" height="340" key="GridCell.Tab.0.center" timestamp="1584860238294">
+    <state width="1874" height="446" key="GridCell.Tab.0.center" timestamp="1587074768694">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1583871324961" />
-    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1584860238294" />
+    <state width="1874" height="446" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1587074768694" />
     <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.3840.1053@0.27.3840.1053" timestamp="1584747522279" />
     <state width="1638" height="295" key="GridCell.Tab.0.center/1680.0.1366.1024/0.0.1680.1050@0.0.1680.1050" timestamp="1583901659364" />
     <state width="1638" height="222" key="GridCell.Tab.0.center/1680.23.1366.1001/0.23.1680.1027@0.23.1680.1027" timestamp="1583909370162" />
-    <state width="1874" height="340" key="GridCell.Tab.0.left" timestamp="1584860238293">
+    <state width="1874" height="446" key="GridCell.Tab.0.left" timestamp="1587074768693">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1583871324960" />
-    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1584860238293" />
+    <state width="1874" height="446" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1587074768693" />
     <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.3840.1053@0.27.3840.1053" timestamp="1584747522278" />
     <state width="1638" height="295" key="GridCell.Tab.0.left/1680.0.1366.1024/0.0.1680.1050@0.0.1680.1050" timestamp="1583901659362" />
     <state width="1638" height="222" key="GridCell.Tab.0.left/1680.23.1366.1001/0.23.1680.1027@0.23.1680.1027" timestamp="1583909370161" />
-    <state width="1874" height="340" key="GridCell.Tab.0.right" timestamp="1584860238295">
+    <state width="1874" height="446" key="GridCell.Tab.0.right" timestamp="1587074768694">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1583871324961" />
-    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1584860238295" />
+    <state width="1874" height="446" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1587074768694" />
     <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.3840.1053@0.27.3840.1053" timestamp="1584747522279" />
     <state width="1638" height="295" key="GridCell.Tab.0.right/1680.0.1366.1024/0.0.1680.1050@0.0.1680.1050" timestamp="1583901659364" />
     <state width="1638" height="222" key="GridCell.Tab.0.right/1680.23.1366.1001/0.23.1680.1027@0.23.1680.1027" timestamp="1583909370162" />
@@ -183,10 +185,14 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1584860238295" />
-    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog" timestamp="1584676244953">
+    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog" timestamp="1586978603050">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1584676244953" />
+    <state x="493" y="211" width="924" height="691" key="Maven.ArtifactSearchDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1586978603050" />
+    <state x="288" y="143" width="1334" height="827" key="new project wizard" timestamp="1587072296272">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="288" y="143" width="1334" height="827" key="new project wizard/0.27.1920.1053@0.27.1920.1053" timestamp="1587072296272" />
     <state x="624" y="252" key="run.anything.popup" timestamp="1584852134333">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
