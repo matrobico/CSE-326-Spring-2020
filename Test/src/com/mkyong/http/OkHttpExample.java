@@ -38,7 +38,7 @@ public class OkHttpExample {
         //test.listUsers("3", authToken);
 
         //test.sendMessage("I am testing the new system", keygen.getPublicKey(), authToken, "Shad");
-        test.getMessages(keygen.getPrivateKey(), authToken);
+        test.getMessages(keygen.getPrivateKey(), authToken, 1);
         //test.createGroup("test", "asdfasdf", authToken);
     }
 
@@ -284,7 +284,7 @@ public class OkHttpExample {
             // Get response body
             System.out.println(thing);
         }
-        postPublicKey(publicKey, authToken, );
+        postPublicKey(publicKey, authToken, 1);
     }
 
     /**

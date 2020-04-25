@@ -147,13 +147,13 @@ public class Controller {
         try {
             System.out.println(msg.getText());
 
-            obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
+            obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username, 1);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
             display.setText(msg.getText());
             //Thread.sleep(1000);
 
-            List<String> messageList = obj.getMessages("SuperSecretKey", authToken);
+            List<String> messageList = obj.getMessages("SuperSecretKey", authToken, 1);
 
             for (String s : messageList) {
                 messageView.append(s + "\n");
@@ -180,5 +180,14 @@ public class Controller {
     */
     public void handleRegisterButtonAction(ActionEvent actionEvent) {
 
+    }
+
+    @FXML protected void handleGroupButtonAction(ActionEvent event) throws IOException {
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Groups.fxml"));
+        Scene chatViewScene = new Scene(chatViewParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(chatViewScene);
+        window.show();
     }
 }
