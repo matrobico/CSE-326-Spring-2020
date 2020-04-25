@@ -1,5 +1,8 @@
 class GroupsController < ApplicationController
     before_action :authenticate_request
+    before_action :set_group, except: [:create]
+    before_action :authenticate_user, except: [:create, :adduser]
+
     def index
         @groups = Group.all
 
@@ -8,7 +11,7 @@ class GroupsController < ApplicationController
       end
     
     def show
-        @group = Group.find(params[:id])
+      @group = Group.find(params[:id])
     end
 
     def new
@@ -24,10 +27,37 @@ class GroupsController < ApplicationController
           render 'new'
         end
     end
-  
+
+    def users
+      render json: @group.users.select(:name)
+    end  
+    
+    def adduser
+      @param = params[:password]
+      if @param == @group.password
+        if @group.users.find_by(id: @current_user.id) == nil
+          @group.users << @current_user
+          render json: { error: 'Worked!'}
+        else
+          render json: { error: 'User already added'}
+        end
+      else
+        render json: { error: 'Failed!'}
+      end
+
+    end  
 
     private
-      def group_params
-        params.permit(:title, :password)
-      end
+    def authenticate_user
+      @current_user = AuthorizeApiRequest.call(request.headers).result
+      render json: { error: 'Not Authorized (in group)' }, status: 401 unless @group.users.find_by(id: @current_user.id)
+    end  
+
+    def set_group
+      @group = Group.find(params[:group_id])
+    end
+
+    def group_params
+      params.permit(:title, :password)
+    end
 end

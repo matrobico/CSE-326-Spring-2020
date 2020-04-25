@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_050647) do
+ActiveRecord::Schema.define(version: 2020_04_21_010110) do
 
 # Could not dump table "groups" because of following StandardError
 #   Unknown type '' for column 'password'
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "title"
@@ -21,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_050647) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "group_id"
+    t.string "recipient"
+    t.boolean "key"
   end
 
   create_table "users", force: :cascade do |t|

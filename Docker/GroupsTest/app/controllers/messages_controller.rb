@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
    
     private
       def message_params
-        params.require(:message).permit(:title, :text)
+        params.require(:message).permit(:title, :recipient, :key, :text)
       end
 
       def set_group
