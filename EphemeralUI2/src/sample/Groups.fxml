@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label layoutX="101.0" layoutY="191.0" prefHeight="37.0" prefWidth="149.0" text="Please Enter Group Name:" />
+      <TextField layoutX="329.0" layoutY="197.0" />
+      <Button layoutX="111.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Create Group" />
+      <Button layoutX="395.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Join Group" />
+      <Label layoutX="176.0" layoutY="51.0" prefHeight="79.0" prefWidth="341.0" text="EPHEMERAL GROUPS">
+         <font>
+            <Font name="SansSerif Bold" size="25.0" />
+         </font></Label>
+      <Label layoutX="92.0" layoutY="276.0" prefHeight="17.0" prefWidth="168.0" text="Please Enter Group Number:" />
+      <TextField layoutX="329.0" layoutY="272.0" />
+      <Button layoutX="254.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" onAction="#handleReturnButtonAction"  text="Return to login page" />
+   </children>
+</AnchorPane>
