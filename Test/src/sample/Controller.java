@@ -43,6 +43,10 @@ public class Controller {
     private TextField msg;
     @FXML
     private TextArea display;
+    @FXML
+    private TextField group_name;
+    @FXML
+    private TextField group_password;
 
     // I'm using these variables as a way to make testing this GUI
     // easier for now. However, does storing the username and password
@@ -75,7 +79,7 @@ public class Controller {
 
         // Later change to: jpfPassword.getPassword()
         authToken = obj.login(username, password);
-        System.out.println("authtoken: " + authToken);
+        System.out.println("authtokenSubmit " + authToken);
         if (authToken == null) {
             System.out.println("BEEP 0");
             label.setText("Incorrect password");
@@ -84,7 +88,7 @@ public class Controller {
             Scene chatViewScene = new Scene(chatViewParent);
 
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setMaximized(true);
+            //window.setMaximized(true);
             window.setScene(chatViewScene);
             window.show();
         }
@@ -101,7 +105,7 @@ public class Controller {
     }
 
     @FXML protected void handleReturnButtonAction(ActionEvent event) throws IOException {
-        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
         Scene chatViewScene = new Scene(chatViewParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -198,5 +202,15 @@ public class Controller {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(chatViewScene);
         window.show();
+    }
+
+    public void handleCreateGroupAction(ActionEvent actionEvent) throws Exception {
+        System.out.println("authtokenGroup: " + authToken);
+        System.out.println(group_name.getText());
+        System.out.print(group_password.getText());
+        obj.createGroup(group_name.getText(), group_password.getText(), authToken);
+    }
+
+    public void handleJoinGroupAction(ActionEvent actionEvent) {
     }
 }

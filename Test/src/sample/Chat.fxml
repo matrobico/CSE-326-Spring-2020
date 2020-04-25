@@ -8,7 +8,8 @@
       <Pane layoutX="41.0" layoutY="337.0">
          <children>
             <TextField fx:id="msg" layoutX="-2.0" onAction="#onEnter" prefHeight="30.0" prefWidth="296.0" />
-            <Button layoutX="466.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleSendChat" prefHeight="30.0" prefWidth="93.0" text="Send" />
+            <Button layoutX="320" layoutY="-1.0" mnemonicParsing="false" onAction="#handleSendChat" prefHeight="30.0" prefWidth="93.0" text="Send" />
+            <Button layoutX="450.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleGroupButtonAction" prefHeight="30.0" text="Create/Join Groups" />
          </children>
       </Pane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
