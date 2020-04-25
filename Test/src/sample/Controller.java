@@ -32,7 +32,7 @@ public class Controller {
     @FXML
     private TextField pwd;
     @FXML
-    private TextField user;
+    private TextField createUser_username;
     @FXML
     private PasswordField createUser_password;
     @FXML
@@ -178,8 +178,17 @@ public class Controller {
     * done so, they can then click on "Register", which will trigger this
     * function.
     */
-    public void handleRegisterButtonAction(ActionEvent actionEvent) {
+    public void handleRegisterButtonAction(ActionEvent actionEvent) throws Exception {
 
+        obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
+
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
+        Scene chatViewScene = new Scene(chatViewParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setMaximized(true);
+        window.setScene(chatViewScene);
+        window.show();
     }
 
     @FXML protected void handleGroupButtonAction(ActionEvent event) throws IOException {

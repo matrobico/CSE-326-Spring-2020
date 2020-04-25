@@ -75,7 +75,7 @@ public class OkHttpExample {
                 String message = json.getJSONObject(i).getString("text");
                 messageList.add("From:" + sender + "To: " + reciever + RSAUtil.decrypt(message, key));
             }
-            System.out.println(messageList);
+            //System.out.println(messageList);
             return messageList;
         }
 
