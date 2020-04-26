@@ -5,7 +5,7 @@ Structure from: https://stackoverflow.com/questions/22959558/how-can-i-make-code
 Modified to fit our needs, more extensive modification underway
  */
 
-import com.mkyong.http.OkHttpExample;
+import Ephemeral.OkHttpExample;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Arrays;
 
 public class LoginDialog extends JDialog {
     private final JLabel jlblUsername = new JLabel("Username");

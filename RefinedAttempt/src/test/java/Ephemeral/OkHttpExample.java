@@ -1,12 +1,4 @@
-package com.mkyong.http;
-
-/**
- * To-Do
- * Code that can make a GET request for messages
- * Code that can make a POST request for messages
- * Modify current code to more object oriented and structured
- */
-// Registration is not yet working
+package Ephemeral;
 
 import okhttp3.*;
 import org.json.*;
@@ -15,9 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class OkHttpExample {
 
+    ArrayList<User> userList = new ArrayList<>();
+    ArrayList<Group> groupList = new ArrayList<>();
     String url = "http://127.0.0.2:3000";
 
     String user = "";
@@ -27,32 +20,36 @@ public class OkHttpExample {
     public static void main(String[] args) throws Exception {
         OkHttpExample test = new OkHttpExample();
         RSAUtil keygen = new RSAUtil();
+        // keyCheck() checks if there are files named "privateKey and publicKey" if there are not it
+        // generates new keys and puts them into those files.
         keygen.keyCheck();
-        test.user = "Matthew";
-        //test.registerUser("Mattew", "asdfasdf", "asdfasdf");
+        test.user = "Casey";
+        int GroupID = 1;
+        //test.registerUser(test.user, "asdfasdf", "asdfasdf");
 
         String authToken = test.login(test.user, "asdfasdf");
         //test.createGroup("test", "asdfasdf", authToken);
+        //Thread.sleep(2000);
+        test.joinGroup(GroupID, "asdfasdf", authToken, keygen.getPublicKey());
+        test.listUsers(GroupID, authToken);
 
-        //test.joinGroup("3", "asdfasdf", authToken);
-        //test.listUsers("3", authToken);
+        //test.listGroups(authToken);
+        test.getMessages(keygen.getPrivateKey(), authToken, GroupID);
 
-        //test.sendMessage("I am testing the new system", keygen.getPublicKey(), authToken, "Shad");
-        test.getMessages(keygen.getPrivateKey(), authToken);
-        //test.createGroup("test", "asdfasdf", authToken);
+        //test.sendMessageToAll("testing a new thing", authToken, GroupID, test);
     }
 
     /**
-     *
+     * Retrieves all of the messages from a group
      * @param key The key to use to decrypt the message
      * @param authToken The session authentication token
      * @return A list of messages
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public List<String> getMessages(String key, String authToken, int groupNum) throws Exception {
+    public List<String> getMessages(String key, String authToken, int groupID) throws Exception {
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
-                .url(url + "/groups/" + groupNum +"/messages")
+                .url(url + "/groups/" + groupID +"/messages")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .build();
 
@@ -65,15 +62,29 @@ public class OkHttpExample {
             String jsonString =  response.body().string();
             List<String> messageList = new ArrayList<>();
 
-            //System.out.println(jsonString);
+            System.out.println(user + ": ");
+            System.out.println(jsonString);
 
             JSONArray json = new JSONArray(jsonString);
 
             for (int i = 0; i < json.length(); i++){
                 String sender = json.getJSONObject(i).getString("title");
                 String reciever = json.getJSONObject(i).getString("recipient");
+                boolean keyBool = json.getJSONObject(i).getBoolean("key");
                 String message = json.getJSONObject(i).getString("text");
-                messageList.add("From:" + sender + "To: " + reciever + RSAUtil.decrypt(message, key));
+
+                //System.out.println(sender + reciever + keyBool + message);
+
+                if ((reciever.contains(user) || reciever.contains("all: ")) && keyBool == false){
+                    messageList.add(sender + RSAUtil.decrypt(message, key));
+                } else if (reciever.equals("all: ") && keyBool == true){
+                    if (userList.indexOf(new User(sender)) == -1) {
+                        //System.out.println("Adding a new User");
+                        //System.out.println(message);
+                        userList.add(new User(sender, message));
+                    }
+                    messageList.add(sender + "has joined the chat");
+                }
             }
             System.out.println(messageList);
             return messageList;
@@ -82,19 +93,20 @@ public class OkHttpExample {
     }
 
     /**
-     *
+     * Sends a message to a group
      * @param message The message to be sent
      * @param key Private key to encrypt the message
      * @param authToken The session authentication token
      * @param recipient The user this message is intended for (will be needed to
      *                  determine to determine which key to use to encrypt)
-     * @param groupNum The group this message is intended for
+     * @param groupID The group this message is intended for
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void sendMessage(String message, String key, String authToken, String recipient, int groupNum) throws Exception {
+    public void sendMessage(String message, String key, String authToken, String recipient, int groupID) throws Exception {
         String encryptedMessage = RSAUtil.encrypt(message, key);
         //System.out.println(encryptedMessage);
         // form parameters
+
         RequestBody formBody = new FormBody.Builder()
                 .add("message[title]", user + ": ")
                 .add("message[recipient]",  recipient + ": ")
@@ -103,7 +115,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url(url + "/groups/" + groupNum + "/messages")
+                .url(url + "/groups/" + groupID + "/messages")
                 .addHeader("Authorization", authToken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
@@ -115,6 +127,17 @@ public class OkHttpExample {
 
             // Get response body
             //System.out.println(thing);
+        }
+    }
+
+    public void sendMessageToAll(String message, String authToken, int groupID, OkHttpExample test){
+        for (int i = 0; i < userList.size(); i++){
+            try {
+                System.out.println(userList.get(i).name + ": " + userList.get(i).publicKey);
+                test.sendMessage(message, userList.get(i).publicKey, authToken, userList.get(i).name, groupID);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -226,10 +249,9 @@ public class OkHttpExample {
      * @param authToken Session authentication token
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void listUsers(String groupID, String authToken) throws Exception {
+    public ArrayList<String> listUsers(int groupID, String authToken) throws Exception {
         // form parameters
-        RequestBody formBody = new FormBody.Builder()
-                .build();
+        ArrayList<String> userList = new ArrayList<>();
 
         Request request = new Request.Builder()
                 .url(url + "/groups/" + groupID + "/users" )
@@ -242,18 +264,17 @@ public class OkHttpExample {
 
             // Get response body
             String jsonString =  response.body().string();
-            List<String> userList = new ArrayList<>();
-
             //System.out.println(jsonString);
 
             JSONArray json = new JSONArray(jsonString);
 
             for (int i = 0; i < json.length(); i++) {
-                String user = json.getJSONObject(i).getString("name");
-                userList.add(user);
+                String username = json.getJSONObject(i).getString("name");
+                userList.add(username);
             }
             System.out.println(userList);
         }
+        return userList;
     }
 
     /**
@@ -264,7 +285,7 @@ public class OkHttpExample {
      * @param publicKey The user's public key to be posted to the group upon joining
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void joinGroup(String groupID, String password, String authToken, String publicKey) throws Exception {
+    public void joinGroup(int groupID, String password, String authToken, String publicKey) throws Exception {
         // form parameters
         RequestBody formBody = new FormBody.Builder()
                 .add("password", password )
@@ -283,8 +304,13 @@ public class OkHttpExample {
 
             // Get response body
             System.out.println(thing);
+            if (!thing.contains("{\"error\":\"User already added\"}")){
+                postPublicKey(publicKey, authToken, groupID);
+            } else {
+                System.out.println("Not Posting My Public Key");
+            }
+
         }
-        postPublicKey(publicKey, authToken, );
     }
 
     /**
@@ -294,7 +320,7 @@ public class OkHttpExample {
      * @param authToken The session authentication token
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void postPublicKey(String publicKey, String authToken, int groupNum) throws Exception {
+    public void postPublicKey(String publicKey, String authToken, int groupID) throws Exception {
         // form parameters
         RequestBody formBody = new FormBody.Builder()
                 .add("message[title]", user + ": ")
@@ -304,7 +330,7 @@ public class OkHttpExample {
                 .build();
 
         Request request = new Request.Builder()
-                .url(url + "/groups/" + groupNum + "/messages")
+                .url(url + "/groups/" + groupID + "/messages")
                 .addHeader("Authorization", authToken)
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
@@ -319,5 +345,38 @@ public class OkHttpExample {
         }
     }
 
+
+    /**
+     * Lists all of the groups a user is a part of
+     * @param authToken Session authentication token
+     * @throws Exception Throws exception when the response to packet is not a success
+     */
+    public void listGroups(String authToken) throws Exception {
+        // form parameters
+        Request request = new Request.Builder()
+                .url(url + "/user/1/groups/" )
+                .addHeader("Authorization", authToken)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            String jsonString =  response.body().string();
+
+            System.out.println(jsonString);
+
+            JSONArray json = new JSONArray(jsonString);
+
+            for (int i = 0; i < json.length(); i++) {
+                Group temp = new Group();
+                temp.setName(json.getJSONObject(i).getString("title"));
+                temp.setId(json.getJSONObject(i).getInt("id"));
+                groupList.add(temp);
+            }
+            //System.out.println(groupList.get(1).id);
+        }
+    }
 }
 

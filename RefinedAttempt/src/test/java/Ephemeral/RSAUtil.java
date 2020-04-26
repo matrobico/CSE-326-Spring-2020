@@ -1,4 +1,4 @@
-package com.mkyong.http;
+package Ephemeral;
 
 
 import javax.crypto.BadPaddingException;
@@ -7,15 +7,12 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.Scanner;
 
 import static java.util.Base64.getEncoder;
 
@@ -25,6 +22,7 @@ public class RSAUtil {
     private static String privateKey = "";
 
     public static PublicKey getPublicKey(String base64PublicKey) {
+        //System.out.println("Base64: " + base64PublicKey);
         PublicKey publicKey = null;
         try {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(base64PublicKey.getBytes()));
@@ -36,6 +34,7 @@ public class RSAUtil {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
+        System.out.println(publicKey);
         return publicKey;
     }
 

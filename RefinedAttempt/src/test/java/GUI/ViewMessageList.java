@@ -12,15 +12,12 @@ with it. This is a makeshift GUI for now. It exists for demo purposes.
 
 package GUI;
 
-import com.mkyong.http.*;
+import Ephemeral.OkHttpExample;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.TimerTask;
-import java.util.Timer;
 
 public class ViewMessageList extends JPanel implements ActionListener {
     private final JLabel jlbltextArea = new JLabel("Message");
@@ -95,7 +92,7 @@ public class ViewMessageList extends JPanel implements ActionListener {
             //System.out.println(authToken);
             textArea.setText("");
             textArea.setLineWrap(true);
-            for (String s : obj.getMessages("SuperSecretKey", authToken)) {
+            for (String s : obj.getMessages("SuperSecretKey", authToken, 1)) {
                 textArea.append(s + newline);
                 textField.selectAll();
             }
@@ -108,11 +105,9 @@ public class ViewMessageList extends JPanel implements ActionListener {
         // Testing things out
         try {
             System.out.println(textField.getText());
-<<<<<<< HEAD
-            obj.sendMessage(textField.getText(), "SuperSecretKey", authToken, user);
+            obj.sendMessage(textField.getText(), "SuperSecretKey", authToken, user, 1);
             Thread.sleep(2000);
-=======
-            obj.sendPost(textField.getText(), "SuperSecretKey", authToken, user);
+            obj.sendMessage(textField.getText(), "SuperSecretKey", authToken, user, 1);
             Thread.sleep(1000);
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +115,6 @@ public class ViewMessageList extends JPanel implements ActionListener {
 
         try {
             refreshMessages();
->>>>>>> 34a76646e84f7b809055b78111d58e7a6e1c258a
         } catch (Exception e) {
             e.printStackTrace();
         }

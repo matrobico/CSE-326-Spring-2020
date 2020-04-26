@@ -1,11 +1,7 @@
 package GUI;
-import com.mkyong.http.*;
+import Ephemeral.OkHttpExample;
 
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 // Main class for the demo. Run this to start the demo.
 public class Demo extends JFrame {

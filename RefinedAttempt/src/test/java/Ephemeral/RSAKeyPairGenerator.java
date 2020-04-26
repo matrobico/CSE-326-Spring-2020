@@ -1,4 +1,4 @@
-package com.mkyong.http;
+package Ephemeral;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,10 +1,8 @@
 package GUI;
-import com.mkyong.http.*;
+import Ephemeral.OkHttpExample;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.View;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

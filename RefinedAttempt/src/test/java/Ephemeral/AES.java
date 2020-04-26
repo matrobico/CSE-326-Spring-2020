@@ -1,4 +1,4 @@
-package com.mkyong.http;
+package Ephemeral;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
