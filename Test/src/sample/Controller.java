@@ -89,7 +89,7 @@ public class Controller {
 
 
         authToken = obj.login(username, password);
-        System.out.println("authtokenSubmit " + authToken);
+        //System.out.println("authtokenSubmit " + authToken);
         if (authToken == null) {
             label.setText("Incorrect password");
         } else {
@@ -126,7 +126,6 @@ public class Controller {
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(chatViewScene);
-        System.out.print(userList);
         window.show();
     }
 
@@ -164,7 +163,7 @@ public class Controller {
         StringBuilder messageView = new StringBuilder((""));
 
         try {
-            //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username, 1);
+            obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username, 1);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
             display.setText(msg.getText());
