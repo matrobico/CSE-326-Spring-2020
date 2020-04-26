@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="363.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="377.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <VBox layoutX="37.0" layoutY="67.0" prefHeight="208.0" prefWidth="563.0">
          <children>
@@ -28,7 +28,7 @@
                </children>
             </GridPane>
          </children></VBox>
-      <Label layoutY="267.0" prefHeight="40.0" prefWidth="820.0" text="Note: Password must contain at least 8 characters, include lowercase and uppercase alphabetic characters, numbers and symbols">
+      <Label layoutX="22.0" layoutY="267.0" prefWidth="820.0" prefHeight="40.0" text="Note: Password must contain at least 8 characters, include lowercase and uppercase alphabetic characters, numbers and symbols">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -39,6 +39,6 @@
             <Label fx:id="label2" prefHeight="17.0" prefWidth="344.0" />
         </buttons>
       </ButtonBar>
-      <Button layoutX="70.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleReturnButtonAction" text="Return to login page" />
+      <Button layoutX="70.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleReturnLoginButtonAction" text="Return to login page" />
    </children>
 </AnchorPane>

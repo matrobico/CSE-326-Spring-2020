@@ -26,7 +26,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
         primaryStage.setTitle("Ephemeral");
-        primaryStage.setScene(new Scene(root, 665, 560));
+        primaryStage.setScene(new Scene(root, 665, 500)); // Old: 560
         primaryStage.show();
         //primaryStage.setMaximized(true);
 
