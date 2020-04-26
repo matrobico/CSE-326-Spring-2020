@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99134e4c-b82c-48ec-94b6-79ec50594e73" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EphemralUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/JavaFX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/JavaFX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessagingClient.ucls" beforeDir="false" afterPath="$PROJECT_DIR$/MessagingClient.ucls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/AES.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/OkHttpExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/OkHttpExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/RSAKeyPairGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/RSAKeyPairGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/RSAUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/RSAUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Ephemeral/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Ephemeral/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GUI/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GUI/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GUI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GUI/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GUI/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GUI/LoginDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GUI/ViewMessageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GUI/ViewMessageList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/LoginDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/LoginDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GUI/ViewMessageList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/AES.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mkyong/http/OkHttpExample.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +19,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/ProjectDoodle/CSE-326-Spring-2020.git" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1YvJYICnpDNA7C18tkPJG4KcgbK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -139,7 +125,30 @@
       <option name="presentableId" value="Default" />
       <updated>1583817180583</updated>
     </task>
+    <task id="LOCAL-00001" summary="Pushing because my previous push did not work">
+      <created>1587933440049</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587933440049</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Pushing because my previous push did not work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pushing because my previous push did not work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="659" y="358" width="592" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587779833056">
@@ -156,10 +165,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="801" y="445" width="308" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1584674804312" />
-    <state x="546" y="92" width="818" height="930" key="CommitChangelistDialog2" timestamp="1587933400436">
+    <state x="546" y="92" width="818" height="930" key="CommitChangelistDialog2" timestamp="1587933439573">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="546" y="92" width="818" height="930" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1587933400436" />
+    <state x="546" y="92" width="818" height="930" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1587933439573" />
     <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1587073425388">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
