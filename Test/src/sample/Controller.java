@@ -248,4 +248,16 @@ public class Controller {
         List<String> values = Arrays.asList("one", "two", "three");
         userList.setItems(FXCollections.observableList(values));
     }
+
+    /**
+     * Takes the user to the group creation/join GUI
+     */
+    public void handleGroupButtonAction(ActionEvent actionEvent) throws IOException {
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Groups.fxml"));
+        Scene chatViewScene = new Scene(chatViewParent);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(chatViewScene);
+        window.show();
+    }
 }

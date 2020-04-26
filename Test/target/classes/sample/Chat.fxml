@@ -9,7 +9,7 @@
          <children>
             <TextField fx:id="msg" layoutX="-2.0" onAction="#onEnter" prefHeight="30.0" prefWidth="296.0" />
             <Button layoutX="300" layoutY="-1.0" mnemonicParsing="false" onAction="#handleSendChat" prefHeight="30.0" prefWidth="70.0" text="Send" />
-            <Button layoutX="380" layoutY="-1.0" mnemonicParsing="false" onAction="#handleSendChat" prefHeight="30.0" prefWidth="70.0" text="Refresh" />
+            <Button layoutX="380" layoutY="-1.0" mnemonicParsing="false" onAction="#handleRefreshButtonAction" prefHeight="30.0" prefWidth="70.0" text="Refresh" />
             <Button layoutX="460.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleGroupButtonAction" prefHeight="30.0" text="Create/Join Groups" />
          </children>
       </Pane>
