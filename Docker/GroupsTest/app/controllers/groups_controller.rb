@@ -22,7 +22,8 @@ class GroupsController < ApplicationController
         @group = Group.new(group_params)
      
         if @group.save
-          redirect_to @group
+          render json: {message: 'Worked!', group: @group}
+          #redirect_to @group
         else
           render 'new'
         end
