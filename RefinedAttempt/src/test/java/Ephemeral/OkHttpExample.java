@@ -25,11 +25,11 @@ public class OkHttpExample {
         // generates new keys and puts them into those files.
         keygen.keyCheck();
         test.user = "Casey";
-        int GroupID = 1;
+        int GroupID = 15;
         //test.registerUser(test.user, "asdfasdf", "asdfasdf");
 
         String authToken = test.login(test.user, "asdfasdf");
-        //test.createGroup("test", "asdfasdf", authToken);
+        test.createGroup("test", "asdfasdf", authToken);
         //Thread.sleep(2000);
         test.joinGroup(GroupID, "asdfasdf", authToken, keygen.getPublicKey());
         test.listUsers(GroupID, authToken);
