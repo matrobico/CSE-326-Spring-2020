@@ -20,7 +20,8 @@
               </rowConstraints>
                <children>
                   <Label prefHeight="17.0" prefWidth="170.0" text="Username:" />
-                  <TextField fx:id="createUser_username" layoutX="110.0" layoutY="66.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="createUser_username" layoutX="10.0" layoutY="6.0" GridPane.columnIndex="1" />
+                   <Label fx:id="createUser_username_label" prefHeight="17.0" prefWidth="344.0" />
                   <PasswordField fx:id="createUser_password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label layoutX="10.0" layoutY="25.0" prefHeight="17.0" prefWidth="170.0" text="Password:" GridPane.rowIndex="1" />
                   <Label layoutX="10.0" layoutY="70.0" prefHeight="17.0" prefWidth="170.0" text="Reenter Password" GridPane.rowIndex="2" />

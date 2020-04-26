@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,7 +34,7 @@ import java.util.regex.Pattern;
 
 public class Controller {
     @FXML
-    private Label label;
+    private Label login_label;
     @FXML
     private Text actiontarget;
     @FXML
@@ -58,6 +59,8 @@ public class Controller {
     private TextField group_name;
     @FXML
     private TextField group_password;
+    @FXML
+    private Label createUser_username_label;
 
     // I'm using these variables as a way to make testing this GUI
     // easier for now. However, does storing the username and password
@@ -66,6 +69,7 @@ public class Controller {
     public static String authToken;
     public static String username;
     public static String password;
+    public static RSAUtil keygen = new RSAUtil();
 
     // The setText() function for a text field replaces the text that is
     // already there. However, we want any new text to be appended in our
@@ -91,7 +95,7 @@ public class Controller {
         authToken = obj.login(username, password);
         //System.out.println("authtokenSubmit " + authToken);
         if (authToken == null) {
-            label.setText("Incorrect password");
+            login_label.setText("Incorrect password");
         } else {
 
             Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
@@ -161,9 +165,10 @@ public class Controller {
      */
     @FXML protected void handleSendChat(ActionEvent event) {
         StringBuilder messageView = new StringBuilder((""));
+        keygen.keyCheck();
 
         try {
-            obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username, 1);
+            obj.sendMessage(msg.getText(), keygen.getPublicKey(), authToken, username, 1);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
             display.setText(msg.getText());
@@ -195,16 +200,24 @@ public class Controller {
     * function.
     */
     public void handleRegisterButtonAction(ActionEvent actionEvent) throws Exception {
+        // Still trying to figure out how to set label correctly depending on the errors
+        if ((createUser_username.getText().isEmpty()) || createUser_password.getText().isEmpty() || createUser_repassword.getText().isEmpty()) {
+            //createUser_username_label.setContentDisplay(ContentDisplay.TOP);
+            createUser_username_label.setAlignment(Pos.TOP_LEFT);
+            createUser_username_label.setText("Fields cannot be empty");
+        } else if (createUser_password.getText() != createUser_repassword.getText()) {
+            createUser_username_label.setText("Passwords do not match");
+        } else {
+            obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
 
-        obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
+            Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
+            Scene chatViewScene = new Scene(chatViewParent);
 
-        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
-        Scene chatViewScene = new Scene(chatViewParent);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        //window.setMaximized(true);
-        window.setScene(chatViewScene);
-        window.show();
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            //window.setMaximized(true);
+            window.setScene(chatViewScene);
+            window.show();
+        }
     }
 
     /**
