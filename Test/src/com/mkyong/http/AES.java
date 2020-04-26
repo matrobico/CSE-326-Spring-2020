@@ -1,4 +1,4 @@
-package com.mkyong.http;
+package Ephemeral;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
@@ -11,6 +11,7 @@ public class AES {
 
     private static SecretKeySpec secretKey;
     private static byte[] key;
+
 
     public static void setKey(String myKey)
     {
