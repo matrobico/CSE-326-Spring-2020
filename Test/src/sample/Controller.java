@@ -214,6 +214,7 @@ public class Controller {
         }
 
          */
+        //System.out.print("New user: " + createUser_username.getText());
         obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
 
         Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
@@ -230,9 +231,9 @@ public class Controller {
      * Group GUI
      */
     public void handleCreateGroupAction(ActionEvent actionEvent) throws Exception {
-        System.out.println("authtokenGroup: " + authToken);
-        System.out.println(group_name.getText());
-        System.out.print(group_password.getText());
+        //System.out.println("authtokenGroup: " + authToken);
+        //System.out.println(group_name.getText());
+        //System.out.print(group_password.getText());
         obj.createGroup(group_name.getText(), group_password.getText(), authToken);
     }
 
@@ -242,6 +243,7 @@ public class Controller {
      */
     public void handleJoinGroupAction(ActionEvent actionEvent) throws Exception {
         // If successful upon joining a group, display user's of group
+        keygen.keyCheck();
         obj.joinGroup(1, group_password.getText(), authToken, keygen.getPublicKey());
 
     }
@@ -264,15 +266,16 @@ public class Controller {
     public void handleRefreshButtonAction(ActionEvent actionEvent) throws Exception {
         StringBuilder messageView = new StringBuilder((""));
 
-        // This will grab and display the user list
+        // This will grab and display the user list (i.e, refresh user list)
         List<String> values = Arrays.asList("one", "two", "three");
         userList.setItems(FXCollections.observableList(values));
-        keygen.keyCheck();
 
+        keygen.keyCheck();
+        // Refresh messages
         List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, 1);
 
         for (String s : messageList) {
-            System.out.print(s);
+            //System.out.print(s);
             messageView.append(s + "\n");
             display.setText(messageView.toString());
         }

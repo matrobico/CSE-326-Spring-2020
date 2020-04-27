@@ -64,7 +64,7 @@ public class OkHttpExample {
             List<String> messageList = new ArrayList<>();
 
             //System.out.println(user + ": ");
-            //System.out.println(jsonString);
+            System.out.println("jsonString: " + jsonString);
 
             JSONArray json = new JSONArray(jsonString);
 
@@ -104,9 +104,11 @@ public class OkHttpExample {
      * @throws Exception Throws exception when the response to packet is not a success
      */
     public void sendMessage(String message, String key, String authToken, String recipient, int groupID) throws Exception {
+        //System.out.println("This is the key inside sendMessage " + key + "\n");
         String encryptedMessage = RSAUtil.encrypt(message, key);
         //System.out.println(encryptedMessage);
         // form parameters
+
 
         RequestBody formBody = new FormBody.Builder()
                 .add("message[title]", user + ": ")
@@ -131,10 +133,12 @@ public class OkHttpExample {
         }
     }
 
-    public void sendMessageToAll(String message, String authToken, int groupID, OkHttpExample test){
+    public void sendMessageToAll(String message, String authToken, int groupID, OkHttpExample test) {
+        //System.out.print(authToken);
         for (int i = 0; i < userList.size(); i++){
             try {
-                System.out.println(userList.get(i).name + ": " + userList.get(i).publicKey);
+                //System.out.println("UserList: " + userList.get(i).name);
+                //System.out.println(userList.get(i).name + ": " + userList.get(i).publicKey);
                 test.sendMessage(message, userList.get(i).publicKey, authToken, userList.get(i).name, groupID);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -211,7 +215,7 @@ public class OkHttpExample {
             // Get response body
             String thing =  response.body().string();
 
-            System.out.println(thing);
+            //System.out.println(thing);
         }
     }
 
@@ -366,7 +370,7 @@ public class OkHttpExample {
             // Get response body
             String jsonString =  response.body().string();
 
-            System.out.println(jsonString);
+            //System.out.println(jsonString);
 
             JSONArray json = new JSONArray(jsonString);
 
