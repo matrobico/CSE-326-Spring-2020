@@ -58,7 +58,7 @@ public class Controller {
     @FXML
     private TextField group_name;
     @FXML
-    private TextField group_password;
+    private PasswordField group_password;
     @FXML
     private Label createUser_username_label;
 

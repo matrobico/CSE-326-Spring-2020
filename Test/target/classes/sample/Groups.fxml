@@ -15,7 +15,7 @@
             <Font name="SansSerif Bold" size="25.0" />
          </font></Label>
       <Label layoutX="92.0" layoutY="276.0" prefHeight="17.0" prefWidth="168.0" text="Please Enter Group Password:" />
-      <TextField fx:id="group_password" layoutX="329.0" layoutY="272.0" />
+      <PasswordField fx:id="group_password" layoutX="329.0" layoutY="272.0" />
       <Button layoutX="254.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" onAction="#handleReturnChatButtonAction"  text="Return" />
    </children>
 </AnchorPane>
