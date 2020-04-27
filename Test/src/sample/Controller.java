@@ -24,6 +24,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -267,7 +268,8 @@ public class Controller {
         StringBuilder messageView = new StringBuilder((""));
 
         // This will grab and display the user list (i.e, refresh user list)
-        List<String> values = Arrays.asList("one", "two", "three");
+        //List<String> values = Arrays.asList("one", "two", "three");
+        List<String> values = obj.listUsers(1, authToken);
         userList.setItems(FXCollections.observableList(values));
 
         keygen.keyCheck();

@@ -254,9 +254,9 @@ public class OkHttpExample {
      * @param authToken Session authentication token
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public ArrayList<String> listUsers(int groupID, String authToken) throws Exception {
+    public List<String> listUsers(int groupID, String authToken) throws Exception {
         // form parameters
-        ArrayList<String> userList = new ArrayList<>();
+        List<String> userList = new ArrayList<>();
 
         Request request = new Request.Builder()
                 .url(url + "/groups/" + groupID + "/users" )
