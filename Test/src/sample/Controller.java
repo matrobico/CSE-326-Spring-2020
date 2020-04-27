@@ -164,22 +164,15 @@ public class Controller {
      * users.
      */
     @FXML protected void handleSendChat(ActionEvent event) {
-        StringBuilder messageView = new StringBuilder((""));
         keygen.keyCheck();
 
         try {
-            obj.sendMessage(msg.getText(), keygen.getPublicKey(), authToken, username, 1);
+            //obj.sendMessage(msg.getText(), keygen.getPublicKey(), authToken, username, 1);
+            obj.sendMessageToAll(msg.getText(), authToken, 1, obj);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
-            display.setText(msg.getText());
+            //display.setText(msg.getText());
             //Thread.sleep(1000);
-
-            List<String> messageList = obj.getMessages("SuperSecretKey", authToken, 1);
-
-            for (String s : messageList) {
-                messageView.append(s + "\n");
-                display.setText(messageView.toString());
-            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -201,6 +194,7 @@ public class Controller {
     */
     public void handleRegisterButtonAction(ActionEvent actionEvent) throws Exception {
         // Still trying to figure out how to set label correctly depending on the errors
+        /*
         if ((createUser_username.getText().isEmpty()) || createUser_password.getText().isEmpty() || createUser_repassword.getText().isEmpty()) {
             //createUser_username_label.setContentDisplay(ContentDisplay.TOP);
             createUser_username_label.setAlignment(Pos.TOP_LEFT);
@@ -218,6 +212,17 @@ public class Controller {
             window.setScene(chatViewScene);
             window.show();
         }
+
+         */
+        obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
+
+        Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
+        Scene chatViewScene = new Scene(chatViewParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        //window.setMaximized(true);
+        window.setScene(chatViewScene);
+        window.show();
     }
 
     /**
@@ -235,8 +240,9 @@ public class Controller {
      * Handles joining a group after the user has clicked "Join Group" from the
      * Group GUI
      */
-    public void handleJoinGroupAction(ActionEvent actionEvent) {
+    public void handleJoinGroupAction(ActionEvent actionEvent) throws Exception {
         // If successful upon joining a group, display user's of group
+        obj.joinGroup(1, group_password.getText(), authToken, keygen.getPublicKey());
 
     }
 
@@ -255,10 +261,22 @@ public class Controller {
     /**
      * Refreshes the message and user list in the chat GUI
      */
-    public void handleRefreshButtonAction(ActionEvent actionEvent) {
+    public void handleRefreshButtonAction(ActionEvent actionEvent) throws Exception {
+        StringBuilder messageView = new StringBuilder((""));
+
         // This will grab and display the user list
         List<String> values = Arrays.asList("one", "two", "three");
         userList.setItems(FXCollections.observableList(values));
+        keygen.keyCheck();
+
+        List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, 1);
+
+        for (String s : messageList) {
+            System.out.print(s);
+            messageView.append(s + "\n");
+            display.setText(messageView.toString());
+        }
+
     }
 
     /**

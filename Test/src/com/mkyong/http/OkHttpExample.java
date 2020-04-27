@@ -63,8 +63,8 @@ public class OkHttpExample {
             String jsonString =  response.body().string();
             List<String> messageList = new ArrayList<>();
 
-            System.out.println(user + ": ");
-            System.out.println(jsonString);
+            //System.out.println(user + ": ");
+            //System.out.println(jsonString);
 
             JSONArray json = new JSONArray(jsonString);
 
@@ -87,7 +87,7 @@ public class OkHttpExample {
                     messageList.add(sender + "has joined the chat");
                 }
             }
-            System.out.println(messageList);
+            //System.out.println(messageList);
             return messageList;
         }
 
@@ -273,7 +273,7 @@ public class OkHttpExample {
                 String username = json.getJSONObject(i).getString("name");
                 userList.add(username);
             }
-            System.out.println(userList);
+            //System.out.println(userList);
         }
         return userList;
     }
@@ -304,7 +304,7 @@ public class OkHttpExample {
             String thing =  response.body().string();
 
             // Get response body
-            System.out.println(thing);
+            //System.out.println(thing);
             if (!thing.contains("{\"error\":\"User already added\"}")){
                 postPublicKey(publicKey, authToken, groupID);
             } else {
