@@ -83,12 +83,12 @@ public class RSAUtil {
         File inFile = new File("RSA/publicKey");
         while (publicKey.equals("")) {
             if (inFile.exists()) {
-                System.out.println("Using existing file");
+                //System.out.println("Using existing file");
                 byte[] temp = readContentIntoByteArray(inFile);
                 publicKey = getEncoder().encodeToString(temp);
                 //System.out.println("Public Key: " + publicKey);
             } else {
-                System.out.println("Making new key");
+                //System.out.println("Making new key");
 
                 RSAKeyPairGenerator keyGen = null;
                 try {

@@ -1,5 +1,14 @@
 package sample;
 
+/**
+ * To-Do:
+ *    - Automatically refresh messages
+ *    - Get GroupID by name
+ *    - Have UI notification for group creation and join
+ *    - Add confirmation messages
+ *    - Button to logout (so you don't have to restart app to login as different user)
+ */
+
 
 import com.mkyong.http.*;
 import javafx.beans.Observable;
@@ -81,13 +90,13 @@ public class Controller {
 
 
     /**
-     * This function will take the user to the "messages" screen after clicking submit.
+     * This function will take the user to the "messages" GUI after clicking submit.
      *
      * The user will enter their username and password. Their input will be gathered here
      * and verified. If successful, they will continue. If not successful, they will be
      * notified and cannot proceed until a successful login.
      */
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) throws Exception {
+    @FXML protected void handleLoginButtonAction(ActionEvent event) throws Exception {
         //String authToken;
         username = usr.getText();
         password = pwd.getText();
@@ -98,7 +107,8 @@ public class Controller {
         if (authToken == null) {
             login_label.setText("Incorrect password");
         } else {
-
+            //obj.setUser(username);
+            //System.out.println(obj.getUser());
             Parent chatViewParent = FXMLLoader.load(getClass().getResource("Chat.fxml"));
             Scene chatViewScene = new Scene(chatViewParent);
 
@@ -169,7 +179,7 @@ public class Controller {
 
         try {
             //obj.sendMessage(msg.getText(), keygen.getPublicKey(), authToken, username, 1);
-            obj.sendMessageToAll(msg.getText(), authToken, 1, obj);
+            obj.sendMessageToAll(msg.getText(), authToken, 1, obj, username);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
             //display.setText(msg.getText());
@@ -217,6 +227,7 @@ public class Controller {
          */
         //System.out.print("New user: " + createUser_username.getText());
         obj.registerUser(createUser_username.getText(), createUser_password.getText(), createUser_repassword.getText());
+        //obj.setUser(createUser_username.getText());
 
         Parent chatViewParent = FXMLLoader.load(getClass().getResource("Ephemeral.fxml"));
         Scene chatViewScene = new Scene(chatViewParent);
@@ -245,7 +256,7 @@ public class Controller {
     public void handleJoinGroupAction(ActionEvent actionEvent) throws Exception {
         // If successful upon joining a group, display user's of group
         keygen.keyCheck();
-        obj.joinGroup(1, group_password.getText(), authToken, keygen.getPublicKey());
+        obj.joinGroup(1, group_password.getText(), authToken, keygen.getPublicKey(), username);
 
     }
 
@@ -274,7 +285,7 @@ public class Controller {
 
         keygen.keyCheck();
         // Refresh messages
-        List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, 1);
+        List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, 1, username);
 
         for (String s : messageList) {
             //System.out.print(s);

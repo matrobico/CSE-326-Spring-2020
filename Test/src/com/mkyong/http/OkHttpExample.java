@@ -14,9 +14,20 @@ public class OkHttpExample {
     ArrayList<Group> groupList = new ArrayList<>();
     String url = "http://127.0.0.1:3000";
 
-    String user = "";
+    //String user = "";
 
     private final OkHttpClient httpClient = new OkHttpClient();
+
+    /*
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+
 
     public static void main(String[] args) throws Exception {
         OkHttpExample test = new OkHttpExample();
@@ -24,11 +35,11 @@ public class OkHttpExample {
         // keyCheck() checks if there are files named "privateKey and publicKey" if there are not it
         // generates new keys and puts them into those files.
         keygen.keyCheck();
-        test.user = "Casey";
+        //test.user = "Casey";
         int GroupID = 1;
         //test.registerUser(test.user, "asdfasdf", "asdfasdf");
 
-        String authToken = test.login(test.user, "asdfasdf");
+        //String authToken = test.login(test.user, "asdfasdf");
         //test.createGroup("test", "asdfasdf", authToken);
         //Thread.sleep(2000);
         test.joinGroup(GroupID, "asdfasdf", authToken, keygen.getPublicKey());
@@ -40,6 +51,8 @@ public class OkHttpExample {
         //test.sendMessageToAll("testing a new thing", authToken, GroupID, test);
     }
 
+     */
+
     /**
      * Retrieves all of the messages from a group
      * @param key The key to use to decrypt the message
@@ -47,7 +60,7 @@ public class OkHttpExample {
      * @return A list of messages
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public List<String> getMessages(String key, String authToken, int groupID) throws Exception {
+    public List<String> getMessages(String key, String authToken, int groupID, String user) throws Exception {
         Request request = new Request.Builder()
                 .addHeader("Authorization", authToken)
                 .url(url + "/groups/" + groupID +"/messages")
@@ -67,6 +80,7 @@ public class OkHttpExample {
             System.out.println("jsonString: " + jsonString);
 
             JSONArray json = new JSONArray(jsonString);
+            userList.clear();
 
             for (int i = 0; i < json.length(); i++){
                 String sender = json.getJSONObject(i).getString("title");
@@ -75,7 +89,7 @@ public class OkHttpExample {
                 String message = json.getJSONObject(i).getString("text");
 
                 //System.out.println(sender + reciever + keyBool + message);
-
+                System.out.println("This is the user: " + user);
                 if ((reciever.contains(user) || reciever.contains("all: ")) && keyBool == false){
                     messageList.add(sender + RSAUtil.decrypt(message, key));
                 } else if (reciever.equals("all: ") && keyBool == true){
@@ -103,7 +117,7 @@ public class OkHttpExample {
      * @param groupID The group this message is intended for
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void sendMessage(String message, String key, String authToken, String recipient, int groupID) throws Exception {
+    public void sendMessage(String message, String key, String authToken, String recipient, int groupID, String user) throws Exception {
         //System.out.println("This is the key inside sendMessage " + key + "\n");
         String encryptedMessage = RSAUtil.encrypt(message, key);
         //System.out.println(encryptedMessage);
@@ -112,7 +126,7 @@ public class OkHttpExample {
 
         RequestBody formBody = new FormBody.Builder()
                 .add("message[title]", user + ": ")
-                .add("message[recipient]",  recipient + ": ")
+                .add("message[recipient]",  recipient)
                 .add("message[key]", "false")
                 .add("message[text]", encryptedMessage )
                 .build();
@@ -133,13 +147,14 @@ public class OkHttpExample {
         }
     }
 
-    public void sendMessageToAll(String message, String authToken, int groupID, OkHttpExample test) {
+    public void sendMessageToAll(String message, String authToken, int groupID, OkHttpExample test, String user) {
         //System.out.print(authToken);
+        //System.out.println("This is the size of ");
         for (int i = 0; i < userList.size(); i++){
             try {
-                //System.out.println("UserList: " + userList.get(i).name);
+                System.out.println("UserList: " + userList.get(i).name);
                 //System.out.println(userList.get(i).name + ": " + userList.get(i).publicKey);
-                test.sendMessage(message, userList.get(i).publicKey, authToken, userList.get(i).name, groupID);
+                test.sendMessage(message, userList.get(i).publicKey, authToken, userList.get(i).name, groupID, user);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -290,7 +305,7 @@ public class OkHttpExample {
      * @param publicKey The user's public key to be posted to the group upon joining
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void joinGroup(int groupID, String password, String authToken, String publicKey) throws Exception {
+    public void joinGroup(int groupID, String password, String authToken, String publicKey, String user) throws Exception {
         // form parameters
         RequestBody formBody = new FormBody.Builder()
                 .add("password", password )
@@ -310,7 +325,7 @@ public class OkHttpExample {
             // Get response body
             //System.out.println(thing);
             if (!thing.contains("{\"error\":\"User already added\"}")){
-                postPublicKey(publicKey, authToken, groupID);
+                postPublicKey(publicKey, authToken, groupID, user);
             } else {
                 System.out.println("Not Posting My Public Key");
             }
@@ -325,7 +340,7 @@ public class OkHttpExample {
      * @param authToken The session authentication token
      * @throws Exception Throws exception when the response to packet is not a success
      */
-    public void postPublicKey(String publicKey, String authToken, int groupID) throws Exception {
+    public void postPublicKey(String publicKey, String authToken, int groupID, String user) throws Exception {
         // form parameters
         RequestBody formBody = new FormBody.Builder()
                 .add("message[title]", user + ": ")
