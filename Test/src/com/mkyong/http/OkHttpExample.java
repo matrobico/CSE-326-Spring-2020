@@ -12,21 +12,11 @@ public class OkHttpExample {
 
     ArrayList<User> userList = new ArrayList<>();
     ArrayList<Group> groupList = new ArrayList<>();
-    String url = "http://127.0.0.1:3000";
+    String url = "http://127.0.0.2:3000";
 
-    //String user = "";
+    String user = "";
 
     private final OkHttpClient httpClient = new OkHttpClient();
-
-    /*
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getUser() {
-        return this.user;
-    }
-
 
 
     public static void main(String[] args) throws Exception {
@@ -35,23 +25,22 @@ public class OkHttpExample {
         // keyCheck() checks if there are files named "privateKey and publicKey" if there are not it
         // generates new keys and puts them into those files.
         keygen.keyCheck();
-        //test.user = "Casey";
+        test.user = "Casey";
         int GroupID = 1;
         //test.registerUser(test.user, "asdfasdf", "asdfasdf");
 
-        //String authToken = test.login(test.user, "asdfasdf");
-        //test.createGroup("test", "asdfasdf", authToken);
+        String authToken = test.login(test.user, "asdfasdf");
+        test.createGroup("Is it really working?", "asdfasdf", authToken);
+        test.findGroup(authToken, "Is it really working?");
         //Thread.sleep(2000);
-        test.joinGroup(GroupID, "asdfasdf", authToken, keygen.getPublicKey());
-        test.listUsers(GroupID, authToken);
+        //test.joinGroup(GroupID, "asdfasdf", authToken, keygen.getPublicKey());
+        //test.listUsers(GroupID, authToken);
 
         //test.listGroups(authToken);
-        test.getMessages(keygen.getPrivateKey(), authToken, GroupID);
+        //test.getMessages(keygen.getPrivateKey(), authToken, GroupID);
 
         //test.sendMessageToAll("testing a new thing", authToken, GroupID, test);
     }
-
-     */
 
     /**
      * Retrieves all of the messages from a group
@@ -398,5 +387,40 @@ public class OkHttpExample {
             //System.out.println(groupList.get(1).id);
         }
     }
+
+    /**
+     * Returns the ID of a group from title
+     * @param authToken Session authentication token
+     * @param title The title of the group you are searching for
+     * @throws Exception Throws exception when the response to packet is not a success
+     */
+    public int findGroup(String authToken, String title) throws Exception {
+        // form parameters
+        int groupID = 0;
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("title", title)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url + "/search?title=" + title )
+                .addHeader("Authorization", authToken)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            String jsonString =  response.body().string();
+
+            System.out.println(jsonString);
+
+            groupID = Integer.parseInt(jsonString);
+            //System.out.println(groupList.get(1).id);
+        }
+        return groupID;
+    }
+
 }
 

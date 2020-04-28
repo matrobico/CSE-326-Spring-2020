@@ -45,6 +45,11 @@
             <version>20190722</version>
             <scope>Test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>15-ea+4</version>
+        </dependency>
     </dependencies>
 </project>
 

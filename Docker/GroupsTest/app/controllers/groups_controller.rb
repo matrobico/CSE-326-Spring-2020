@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
     before_action :authenticate_request
-    before_action :set_group, except: [:create]
-    before_action :authenticate_user, except: [:create, :adduser]
+    before_action :set_group, except: [:create, :search]
+    before_action :authenticate_user, except: [:create, :adduser, :search]
 
     def index
         @groups = Group.all
@@ -47,6 +47,12 @@ class GroupsController < ApplicationController
       end
 
     end  
+
+    def search
+      @param = params[:title]
+      #render json: @param
+      render json: Group.find_by(title: params[:title]).id
+    end
 
     private
     def authenticate_user
