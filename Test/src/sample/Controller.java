@@ -3,7 +3,6 @@ package sample;
 /**
  * To-Do:
  *    - Automatically refresh messages
- *    - Get GroupID by name
  *    - Have UI notification for group creation and join
  *    - Add confirmation messages
  *    - Button to logout (so you don't have to restart app to login as different user)
@@ -80,6 +79,7 @@ public class Controller {
     public static String username;
     public static String password;
     public static String groupName;
+    public static int groupNum;
     public static RSAUtil keygen = new RSAUtil();
 
     // The setText() function for a text field replaces the text that is
@@ -180,7 +180,7 @@ public class Controller {
 
         try {
             //obj.sendMessage(msg.getText(), keygen.getPublicKey(), authToken, username, 1);
-            obj.sendMessageToAll(msg.getText(), authToken, 1, obj, username);
+            obj.sendMessageToAll(msg.getText(), authToken, groupNum, obj, username);
             //Thread.sleep(2000);
             //obj.sendMessage(msg.getText(), "SuperSecretKey", authToken, username);
             //display.setText(msg.getText());
@@ -259,7 +259,7 @@ public class Controller {
         keygen.keyCheck();
         groupName = group_name.getText();
         // Should error check this.
-        int groupNum = obj.findGroup(authToken, groupName);
+        groupNum = obj.findGroup(authToken, groupName);
         obj.joinGroup(groupNum, group_password.getText(), authToken, keygen.getPublicKey(), username);
 
     }
@@ -289,13 +289,12 @@ public class Controller {
         // Also, the way this is setup right now, the user should NOT
         // click "refresh" before joining a group. This is because
         // groupName is not set until a user joins a group.
-        int groupNum = obj.findGroup(authToken, groupName);
         List<String> values = obj.listUsers(groupNum, authToken);
         userList.setItems(FXCollections.observableList(values));
 
         keygen.keyCheck();
         // Refresh messages
-        List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, 1, username);
+        List<String> messageList = obj.getMessages(keygen.getPrivateKey(), authToken, groupNum, username);
 
         for (String s : messageList) {
             //System.out.print(s);
