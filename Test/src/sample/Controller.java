@@ -79,6 +79,7 @@ public class Controller {
     public static String authToken;
     public static String username;
     public static String password;
+    public static String groupName;
     public static RSAUtil keygen = new RSAUtil();
 
     // The setText() function for a text field replaces the text that is
@@ -256,7 +257,10 @@ public class Controller {
     public void handleJoinGroupAction(ActionEvent actionEvent) throws Exception {
         // If successful upon joining a group, display user's of group
         keygen.keyCheck();
-        obj.joinGroup(1, group_password.getText(), authToken, keygen.getPublicKey(), username);
+        groupName = group_name.getText();
+        // Should error check this.
+        int groupNum = obj.findGroup(authToken, groupName);
+        obj.joinGroup(groupNum, group_password.getText(), authToken, keygen.getPublicKey(), username);
 
     }
 
@@ -280,7 +284,13 @@ public class Controller {
 
         // This will grab and display the user list (i.e, refresh user list)
         //List<String> values = Arrays.asList("one", "two", "three");
-        List<String> values = obj.listUsers(1, authToken);
+
+        // Should error check this too
+        // Also, the way this is setup right now, the user should NOT
+        // click "refresh" before joining a group. This is because
+        // groupName is not set until a user joins a group.
+        int groupNum = obj.findGroup(authToken, groupName);
+        List<String> values = obj.listUsers(groupNum, authToken);
         userList.setItems(FXCollections.observableList(values));
 
         keygen.keyCheck();

@@ -12,7 +12,7 @@ public class OkHttpExample {
 
     ArrayList<User> userList = new ArrayList<>();
     ArrayList<Group> groupList = new ArrayList<>();
-    String url = "http://127.0.0.2:3000";
+    String url = "http://127.0.0.1:3000";
 
     String user = "";
 
